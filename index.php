@@ -4,7 +4,6 @@
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<?php include "scripts.php" ?>
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/grid.css">
 		<title>Save The Big Day - Home</title>
 	</head>
 	<body>
