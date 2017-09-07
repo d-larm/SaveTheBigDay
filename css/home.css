@@ -1,0 +1,117 @@
+
+form {
+	margin: 0 auto;
+}
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+   float:none;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1000px;
+    }
+}
+
+.text-center {
+   text-align:center
+}
+body {
+    background: url(../img/Wedding.jpg) no-repeat center fixed;
+    font-family:`Avant Garde`, Avantgarde, `Century Gothic`, CenturyGothic, AppleGothic, sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+#registerBack:hover,
+#registerBack:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+	
+.dropdown-menu {
+	min-width: 500px;
+}
+.dropdown-menu .row .list-unstyled li a {
+	padding: 5px 15px;
+	font-weight: 300;
+    font-size:20pt;
+    transition:0.5s;
+    text-decoration: none;
+}
+
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+#startSearch{
+    height:60px;
+    width:60px;
+    border-radius:100%;
+    background-color:rgba(0,0,0,0);
+    color:white;
+    font-size:20pt;
+}
+@media screen and (max-width: 767px) {
+    #startSearch{
+        margin-top: 30px;
+        height:100px;
+        width:100px;
+        font-size:35pt;
+    }
+    #location{
+        margin-top:30px;
+    }
+}
