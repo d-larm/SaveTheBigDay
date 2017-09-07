@@ -121,7 +121,7 @@
 						tagstring += "#"+encodeURIComponent(tags[i].trim());
 					}
 					if(location != "")
-						window.location.href = "./vendors.php?category="+tagstring+"&location="+location;
+						window.location.href = "./vendors.php?tags="+tagstring+"&postcode="+location;
 					else
 						swal("Can not start search","Please enter postcode", "error");
 					
