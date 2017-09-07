@@ -46,3 +46,11 @@ html {
 .menu li:hover {
     background-color: #0099cc;
 }
+
+
+@media screen and (max-width: 1200px) {
+    [class*="col-"] {
+        transition: 0.5s;
+        width:100%;
+    }
+}
