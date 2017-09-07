@@ -335,6 +335,7 @@ div.infoBox {
 
 /* Modal Content */
 .modal-content {
+	max-height: calc(100vh - 210px);
 	overflow-y: auto;
 	position: relative;
 	color:white;
@@ -350,7 +351,7 @@ div.infoBox {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
-    max-height: calc(100vh - 2100px);
+    
 
 }
 .modal-header {
@@ -358,7 +359,6 @@ div.infoBox {
 	padding:10px 20px 0px 20px;
 }
 .modal-body{
-	max-height: calc(100vh - 210px);
     padding:20px;
 }
 /* The Close Button */
@@ -382,7 +382,7 @@ div.infoBox {
     text-decoration: none;
     cursor: pointer;
 }
-.modal-body::-webkit-scrollbar { 
+.modal-content::-webkit-scrollbar { 
     display: none; 
 }
 
