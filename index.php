@@ -7,7 +7,6 @@
 		<title>Save The Big Day - Home</title>
 	</head>
 	<body>
-		ergbdvssdvergvfdgvfdsgsggssbgsfdg
 		<?php include "gnavbar.php" ?>
 		<div class = "logoSection"><img src="img/stbdLogo.png" alt="Logo" style="width:320px"></div>
 		<div class = "searchSection">
