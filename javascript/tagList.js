@@ -35,3 +35,7 @@ function remove(elemId) {
 		}
 	}
 }
+
+function getTags(){
+	return tags;
+}

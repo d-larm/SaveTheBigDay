@@ -17,13 +17,6 @@
 			<div class="searchContainer">
 				<div class="row search">
 					<div class="col-9">
-						<!-- <ul class="tags">
-							<li><a href="#">aaa</a></li>
-							<li><a href="#">aaa</a></li>
-							<li><a href="#">aaa</a></li>
-							<li><a href="#">aaa</a></li>
-							<li><a href="#">aaa</a></li>
-						</ul> -->
 						<div id="tagContainer">
 						</div>				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag..." >
@@ -107,9 +100,9 @@
 			</div>
 				
 		</div>
+		<script src="javascript/tagList.js" type="text/javascript"></script>
 		<script>
 		$(document).ready(function(){
-			new Taggle("tagInput");
 			//Selects the category from the dropdown when an option is clicked
 			var category = "";
 			var location = "";
@@ -141,5 +134,5 @@
 		});
 		</script>
 	</body>
-	<script src="javascript/tagList.js" type="text/javascript"></script>
+	
 </html>
