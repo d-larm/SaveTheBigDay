@@ -104,7 +104,6 @@
 		<script>
 		$(document).ready(function(){
 			//Selects the category from the dropdown when an option is clicked
-			var category = "";
 			var location = "";
 			$(".searchTerm2").on('input', function(){
 				location = $(this).val();
@@ -112,19 +111,25 @@
 				$("input[name=postcode]").val(location);
 			})
 
-			$(".searchTerm1").click(function(){
-				$("#chooseCategory").text($(this).text());
-				category = $(this).text();
-				$("input[name=category]").val(category);
-			});
+			$("#submitSearch").click(function(){
+				tags = getTags();
+				tagstring="";
+				if(tags.length > 0){
+					tagstring="";
+					//Parses the tags into a url string to be sent as url parameters
+					for(i=0;i<tags.length;i++){
+						tagstring += "#"+encodeURIComponent(tags[i].trim());
+					}
+					if(location != "")
+						window.location.href = "./vendors.php?category="+tagstring+"&location="+location;
+					else
+						swal("Can not start search","Please enter postcode", "error");
+					
+				}else
+					swal("Can not start search","Please enter tags to search with", "error");
 
-			$(".searchButton").click(function(){
-				if(category != "")
-					window.location.href = "./vendors.php?category="+category+"&location="+location;
-				else
-					$(".alert").show();
-				// window.location.href = "./vendors.php?category="+category+"&location="+location;
-			})
+				
+			});
 			$('a').click(function(e){
 				if($(this).attr('href') == "#")
 		    // Special stuff to do when this link is clicked...
