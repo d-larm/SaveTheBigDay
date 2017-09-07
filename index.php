@@ -16,9 +16,7 @@
 			You've found Mr.Right, let us find you the right vendor
 			<div class="searchContainer">
 				<div class="row search">
-					<div class="col-9">
-						<div id="tagContainer">
-						</div>				
+					<div class="col-9">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag..." >
 					</div>
 					<div class="col-2">
@@ -28,6 +26,8 @@
 					<button type="submit" class="chevButton" style= "transform: translate(-5px, -5px);" ng-click="validate()" id="submitSearch"><i class="fa fa-chevron-right";></i></button>
 					</button>
 					</div>
+					<div id="tagContainer" class="tagCo">
+					</div>	
 				</div>
 			</div>
 		</div>
