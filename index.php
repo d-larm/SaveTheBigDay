@@ -13,8 +13,11 @@
 			You've found Mr.Right, let us find you the right vendor
 			<div class="searchContainer">
 				<div class="row search">
-					<div class="col-9">				
-						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag..." >
+					<div class="col-1">				
+						<i class="fa fa-search" style="font-size:55px;"></i>
+					</div>
+					<div class="col-8">				
+						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
 					</div>
 					<div class="col-2">
 					<input type="text" id="postcodeInput" class="searchTerm2" placeholder="SE22 9JB">
