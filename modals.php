@@ -19,19 +19,19 @@
 								<div class=inputContainer>
 									<div class = "row">
 										<div class = "col-6">
-											<input type=email style="background-color:{{color}}" placeholder="email" ng-model="email" class="signupInput">{{message}}
+											<input type=email style="background-color:{{color}}" placeholder="Email" ng-model="email" class="signupInput">{{message}}
 										</div>
 										<div class = "col-6">
-											<input type=password placeholder="password" ng-model="password" class="signupInput">{{passwordMessage}}
+											<input type=password placeholder="Password" ng-model="password" class="signupInput">{{passwordMessage}}
 										</div>
 									</div>
 									
 									<div class = "row">
 										<div class = "col-6">
-											<input type=text  ng-model="firstname" placeholder="first name"class="signupInput" >{{fNameMessage}}
+											<input type=text  ng-model="firstname" placeholder="First name"class="signupInput" >{{fNameMessage}}
 										</div>
 										<div class = "col-6">
-											<input type=text  ng-model="lastname" placeholder="last name" class="signupInput" >{{lNameMessage}}
+											<input type=text  ng-model="lastname" placeholder="Last name" class="signupInput" >{{lNameMessage}}
 										</div>
 									</div>
 									
