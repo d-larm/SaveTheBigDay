@@ -36,7 +36,6 @@ $(document).ready(function(){
 	// When the user clicks the button, open the modal 
 	$(document).on("click","#signIn",function(){
 		modal.fadeIn();
-		$('.modal').find('input').val('');
 		$("#register").hide();
 		$("#login").show();
 		$("#signInTitle").hide();
@@ -162,8 +161,6 @@ $(document).ready(function(){
 	var app=angular.module('login',[]);
 	app.controller('register',function($scope){
 		$scope.title="Register"
-		$scope.message="";
-		$scope.passwordMessage = "";
 		$scope.validate = function(){
 			
 			$scope.message = validateEmail(($scope.email));
@@ -191,7 +188,7 @@ $(document).ready(function(){
 						});
 						
 					}else{
-						swal("Could not create account","Looks like a a user already exits under this email", "error");
+						swal("Could not create account","Looks like a user already exits under this email", "error");
 					}
 				});
 			}else
@@ -201,11 +198,9 @@ $(document).ready(function(){
 
 	app.controller('login',function($scope){
 		$scope.title="Login";
-		$scope.message="";
 		$scope.login = function(){
-			$scope.message = validateEmail($scope.email);
+			$scope.message = validateEmail(($scope.email));
 			$scope.passwordMessage = validatePassword($scope.password);
-
 			if($scope.message+$scope.passwordMessage == ""){
 				postData = {
 					email : $scope.email,
@@ -224,7 +219,7 @@ $(document).ready(function(){
 						});
 					}else{
 						//Login failed.
-						swal("Login Failed","Username and/or password incorrect", "error");
+						swal("Login Failed","Username and/or password incorrect or doesnt exist", "error");
 					}
 				})
 			}
