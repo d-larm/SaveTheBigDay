@@ -4,6 +4,7 @@
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<?php include "scripts.php" ?>
 		<link rel="stylesheet" href="css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<title>Save The Big Day - Home</title>
 	</head>
 	<body>
@@ -16,8 +17,9 @@
 					<div class="searchClass">				
 						<i class="fa fa-search" style="font-size:45px;"></i>
 					</div>
-					<div class="col-8" style="padding-left:0px;">				
+					<div class="col-8" style="padding-left:0px; padding-bottom:0px;">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
+						<div class="row" id= "searchByVendor">search by vendor</div>
 					</div>
 					<div class="col-2">
 					<input type="text" id="postcodeInput" class="searchTerm2" placeholder="SE22 9JB">

@@ -3,6 +3,9 @@ var tagInput = document.getElementById("tagInput");
 var tagContainer = document.getElementById("tagContainer");
 var tagNo=0;
 
+
+
+
 tagInput.addEventListener("keypress", function (e) {
 	var key = e.keyCode;
 	if ((key === 13)&&(tagInput.value!=="")) { // 13 is enter
@@ -27,13 +30,15 @@ function addTag() {
 
 function remove(elemId) {
 	var elem = document.getElementById(elemId);
-	elem.parentNode.removeChild(elem);
+	
+	$("#"+elemId).fadeOut(150);
 	
 	for (var i=0; i<tags.length; i++) {
 		if(elem.innerHTML===tags[i]) {
 			tags.splice(i, 1);
 		}
 	}
+	//elem.parentNode.removeChild(elem);
 }
 
 function getTags(){
