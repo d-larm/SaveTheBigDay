@@ -19,46 +19,46 @@
 								<div class=inputContainer>
 									<div class = "row">
 										<div class = "col-6">
-											<input type=email style="background-color:{{color}}" placeholder="Email" ng-model="email" class="signupInput">{{message}}
+											<input type=email style="background-color:{{color}}" placeholder="Email" ng-model="email" class="signupInput"><span class="formMessage">{{message}}</span>
 										</div>
 										<div class = "col-6">
-											<input type=password placeholder="Password" ng-model="password" class="signupInput">{{passwordMessage}}
-										</div>
-									</div>
-									
-									<div class = "row">
-										<div class = "col-6">
-											<input type=text  ng-model="firstname" placeholder="First name"class="signupInput" >{{fNameMessage}}
-										</div>
-										<div class = "col-6">
-											<input type=text  ng-model="lastname" placeholder="Last name" class="signupInput" >{{lNameMessage}}
+											<input type=password placeholder="Password" ng-model="password" class="signupInput"><span class="formMessage">{{passwordMessage}}</span>
 										</div>
 									</div>
 									
 									<div class = "row">
 										<div class = "col-6">
-											<input type=text  ng-model="address1" placeholder="Address Line 1" class="signupInput" >{{address1Message}}
+											<input type=text  ng-model="firstname" placeholder="First name"class="signupInput" ><span class="formMessage">{{fNameMessage}}</span>
 										</div>
 										<div class = "col-6">
-											<input type=text  ng-model="city" placeholder="City" class="signupInput" >{{cityMessage}}
-										</div>
-									</div>
-									
-									<div class = "row">
-										<div class = "col-6">
-											<input type=text  ng-model="country" placeholder="Country" class="signupInput" >{{countryMessage}}
-										</div>
-										<div class = "col-6">
-											<input type=text  ng-model="postcode" placeholder="Postcode" class="signupInput" >{{postcodeMessage}}
+											<input type=text  ng-model="lastname" placeholder="Last name" class="signupInput" ><span class="formMessage">{{lNameMessage}}</span>
 										</div>
 									</div>
 									
 									<div class = "row">
 										<div class = "col-6">
-											<input type=tel  ng-model="telephone1" placeholder="Telephone 1" class="signupInput" >{{tel1Message}}
+											<input type=text  ng-model="address1" placeholder="Address Line 1" class="signupInput"><span class="formMessage">{{address1Message}}</span>
 										</div>
 										<div class = "col-6">
-											<input type=tel  ng-model="telephone2" placeholder="Telephone 2" class="signupInput" >{{tel2Message}}
+											<input type=text  ng-model="city" placeholder="City" class="signupInput" ><span class="formMessage">{{cityMessage}}</span>
+										</div>
+									</div>
+									
+									<div class = "row">
+										<div class = "col-6">
+											<input type=text  ng-model="country" placeholder="Country" class="signupInput" ><span class="formMessage">{{countryMessage}}</span>
+										</div>
+										<div class = "col-6">
+											<input type=text  ng-model="postcode" placeholder="Postcode" class="signupInput" ><span class="formMessage">{{postcodeMessage}}</span>
+										</div>
+									</div>
+									
+									<div class = "row">
+										<div class = "col-6">
+											<input type=tel  ng-model="telephone1" placeholder="Telephone 1" class="signupInput" ><span class="formMessage">{{tel1Message}}</span>
+										</div>
+										<div class = "col-6">
+											<input type=tel  ng-model="telephone2" placeholder="Telephone 2" class="signupInput" ><span class="formMessage">{{tel2Message}}</span>
 										</div>
 									</div>	
 									
@@ -75,8 +75,8 @@
 						<div class=loginContainer>
 							<div class=row>
 								<div class="col-9">
-									<p align=center><input class="loginInput" type=email style="background-color:{{color}}"  ng-model="email" placeholder="Username">{{message}}</p>
-									<p><input class="loginInput" type=password  ng-model="password" placeholder="Password">{{passwordMessage}}</p>
+									<p align=center><input class="loginInput" type=email style="background-color:{{color}}"  ng-model="email" placeholder="Username"><span class="formMessage">{{message}}</span></p>
+									<p><input class="loginInput" type=password  ng-model="password" placeholder="Password"><span class="formMessage">{{passwordMessage}}</span></p>
 									
 								</div>
 								<div class="col-3" style="padding:0 15px 0 15px;">

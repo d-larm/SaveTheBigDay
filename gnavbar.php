@@ -56,11 +56,15 @@ $(document).ready(function(){
 		register=true;
 		$("#registerBack").show();
 		$("#registerBack").css("visibility","visible");
+		$('#register').find('input').val('');
+		$('.formMessage').hide();	
+
 		
 	});
 
 	$(".close").click(function(){
 		modal.slideUp();
+		$('.formMessage').fadeOut();	
 	})
 
 	//Switches to the login modal when back button clicked
@@ -72,9 +76,14 @@ $(document).ready(function(){
 		$("#signInTitle").fadeIn();
 		register=false;
 		$(this).css("visibility","hidden");
-		$('#register').find('input').val('');
+		$('.formMessage').fadeOut();	
+		
 
 	});
+
+	$(".signUpButton").click(function(){
+		$('.formMessage').fadeIn('slow');	
+	})
 
 	$(document).on("click","#logOut",function(){
 		$.post("/php_scripts/logOut.php",function(data){
@@ -88,6 +97,7 @@ $(document).ready(function(){
 	window.onclick = function(event) {
 	    if (event.target == document.getElementById('myModal')) {
 	        modal.fadeOut();
+	        $('.formMessage').fadeOut();	
 	    }
 	    if(event.target != document.getElementById('profile'))
 	    	$("#profileDropDown").slideUp();
@@ -191,8 +201,9 @@ $(document).ready(function(){
 						swal("Could not create account","Looks like a user already exits under this email", "error");
 					}
 				});
-			}else
-				swal("Hold Up","Some fields are not correctly filled in", "warning");	
+			}else{
+				swal("Hold Up","Some fields are not correctly filled in", "warning");
+			}
 		}
 	});
 
@@ -222,6 +233,8 @@ $(document).ready(function(){
 						swal("Login Failed","Username and/or password incorrect or doesnt exist", "error");
 					}
 				})
+			}else{
+				$('.formMessage').fadeIn();	
 			}
 		}
 	});

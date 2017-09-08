@@ -367,6 +367,10 @@ div.infoBox {
 
 }
 
+.formMessage {
+	display:none;
+}
+
 .modal-header {
 	border-bottom: 1px solid lightgray;
 	padding:10px 20px 0px 20px;
