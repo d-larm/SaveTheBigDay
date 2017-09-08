@@ -36,6 +36,7 @@ $(document).ready(function(){
 	// When the user clicks the button, open the modal 
 	$(document).on("click","#signIn",function(){
 		modal.fadeIn();
+		$('.modal').find('input').val('');
 		$("#register").hide();
 		$("#login").show();
 		$("#signInTitle").hide();
@@ -72,6 +73,7 @@ $(document).ready(function(){
 		$("#signInTitle").fadeIn();
 		register=false;
 		$(this).css("visibility","hidden");
+		$('#register').find('input').val('');
 
 	});
 
@@ -101,8 +103,58 @@ $(document).ready(function(){
 });
 
 	function validateEmail(email) {
+		scopeVar = "";
 		var re = /\S+@\S+\.\S+/;
-		return re.test(email);
+		if(!re.test(email))
+			scopeVar="Enter a valid email address";
+
+		return scopeVar;
+	}
+
+	function validatePassword(password){
+		scopeVar = "";
+		if(!password)
+			scopeVar = "Enter a password";
+		else
+			if(password.length < 8)
+				scopeVar = "Password is too short (At least 8 characters)";
+
+		return scopeVar;
+	}
+
+	function validatePostcode(postcode){
+		scopeVar = "";
+
+		if(postcode){
+			string = postcode.replace(/\s+/g, '');
+			if(string.length > 7 && string.length < 5)
+				scopeVar = "Enter a valid postcode";
+		}else
+			scopeVar = "Enter a valid postcode";
+
+		return scopeVar;
+	}
+
+	function validateInput(input){
+		scopeVar = "";
+		if(!input)
+			scopeVar="Please fill out the field";
+
+		return scopeVar;
+	}
+
+	function validateNumber(number){
+		scopeVar = "";
+		if(isNaN(number) || !number ){
+			scopeVar = "Enter a valid UK number (07XXXXXXXXX or 02XXXXXXXXXXX)";
+		}
+		else
+			if(number.substring(0,2) != "07" && number.substring(0,2) != "02"){
+				alert(number.substring(0,2));
+				scopeVar = "Enter a valid UK number (07XXXXXXXXX or 02XXXXXXXXXXX)";
+			}
+
+		return scopeVar;
 	}
 
 
@@ -113,39 +165,37 @@ $(document).ready(function(){
 		$scope.message="";
 		$scope.passwordMessage = "";
 		$scope.validate = function(){
-			var emailValid = false;
-			var passwordValid = false;
-			if(validateEmail($scope.email)){
-				$scope.color="green";
-				$scope.message="";
-				emailValid=true;
-			}else{
-				$scope.color="red";
-				$scope.message="	Enter a valid email address";
-			}
-			if($scope.password != null){
-				passwordValid = true;
-				$scope.passwordMessage = "";
-			}else
-				$scope.passwordMessage = "		Do not leave password blank";
+			
+			$scope.message = validateEmail(($scope.email));
+			$scope.passwordMessage = validatePassword(($scope.password));
+			$scope.fNameMessage = validateInput(($scope.firstname));
+			$scope.lNameMessage = validateInput(($scope.lastname));
+			$scope.address1Message = validateInput(($scope.address1));
+			$scope.cityMessage = validateInput(($scope.city));
+			$scope.countryMessage = validateInput(($scope.country));
+			$scope.postcodeMessage = validatePostcode(($scope.postcode));
+			$scope.tel1Message = validateNumber(($scope.telephone1));
+			$scope.tel2Message = validateNumber(($scope.telephone2));
 
-			if(emailValid && passwordValid){
+						if($scope.message+$scope.passwordMessage+$scope.fNameMessage+$scope.lNameMessage+$scope.address1Message+$scope.cityMessage+$scope.postcodeMessage+$scope.tel1Message == ""){
 				postData = {	email:$scope.email,password:$scope.password,
 								firstname:$scope.firstname,lastname:$scope.lastname,
 								address1:$scope.address1,city:$scope.city,country:$scope.country,
 								postcode:$scope.postcode,telephone1:$scope.telephone1,telephone2:$scope.telephone2
 				};
 				$.post("/php_scripts/createUser.php",postData,function(data){
-					alert(data)
 					completed = JSON.parse(data);
 					if(completed["success"]){
-						alert("Account Created Successfully");
-						close.trigger('click');
+						swal("Done","Account created successfully", "success").then((value)=>{
+							$(".close").trigger('click');
+						});
+						
 					}else{
-						alert("Some fields are incorrect");
+						swal("Could not create account","Looks like a a user already exits under this email", "error");
 					}
 				});
-			}	
+			}else
+				swal("Hold Up","Some fields are not correctly filled in", "warning");	
 		}
 	});
 
@@ -153,22 +203,10 @@ $(document).ready(function(){
 		$scope.title="Login";
 		$scope.message="";
 		$scope.login = function(){
-			var emailValid = false;
-			var passwordValid = false;
-			if(validateEmail($scope.email)){
-				$scope.message="";
-				emailValid=true;
-			}else{
-				$scope.color="red";
-				$scope.message="	Enter a valid email address";
-			}
-			if($scope.password != null){
-				passwordValid = true;
-				$scope.passwordMessage = "";
-			}else
-				$scope.passwordMessage = "		Do not leave password blank";
+			$scope.message = validateEmail($scope.email);
+			$scope.passwordMessage = validatePassword($scope.password);
 
-			if(emailValid && passwordValid){
+			if($scope.message+$scope.passwordMessage == ""){
 				postData = {
 					email : $scope.email,
 					password : $scope.password
@@ -186,7 +224,7 @@ $(document).ready(function(){
 						});
 					}else{
 						//Login failed.
-						alert("Username and/or password incorrect");
+						swal("Login Failed","Username and/or password incorrect", "error");
 					}
 				})
 			}

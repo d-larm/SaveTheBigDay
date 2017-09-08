@@ -7,6 +7,7 @@
 	$password = secure($_POST["password"]);
 	$database = new Database();
 	$accepted = false;
+    $data = array();
 	$query = $database->query("SELECT * FROM USERS WHERE email='{$email}'");
 	while(($users = mysqli_fetch_assoc($query))){
         if($users["Password"] == sha1($password.$users["Salt"])){
@@ -14,10 +15,15 @@
             $_SESSION["name"]=$users["FirstName"];
             $_SESSION["logged"]=1;
             $accepted = true;
+
         }
     }
+    if($accepted)
+        $data = array("success"=>$accepted,"name"=>$_SESSION["name"],"id"=>$_SESSION["id"]);
+    else
+        $data = array("success"=>$accepted);
 
-    $data = array("success"=>$accepted,"name"=>$_SESSION["name"],"id"=>$_SESSION["id"]);
+    
     echo json_encode($data);
     //echo json_encode($accepted);
 
