@@ -12,11 +12,11 @@
 		<div class = "searchSection">
 			You've found Mr.Right, let us find you the right vendor
 			<div class="searchContainer">
-				<div class="row search">
-					<div class="col-1">				
-						<i class="fa fa-search" style="font-size:55px;"></i>
+				<div class="row search" style="	animation: 0.8s ease-out 0s 1 slideInFromLeft;">
+					<div class="searchClass">				
+						<i class="fa fa-search" style="font-size:45px;"></i>
 					</div>
-					<div class="col-8">				
+					<div class="col-8" style="padding-left:0px;">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
 					</div>
 					<div class="col-2">
