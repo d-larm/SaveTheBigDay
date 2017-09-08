@@ -323,6 +323,7 @@ div.infoBox {
    color:    #ADAEB4;
 }
 
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -359,6 +360,7 @@ div.infoBox {
     
 
 }
+
 .modal-header {
 	border-bottom: 1px solid lightgray;
 	padding:10px 20px 0px 20px;
@@ -390,6 +392,11 @@ div.infoBox {
 .modal-content::-webkit-scrollbar { 
     display: none; 
 }
+
+.swal-overlay::-webkit-scrollbar { 
+    display: none; 
+}
+
 
 
 .tag {
