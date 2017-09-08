@@ -26,6 +26,7 @@ function addTag() {
 	newTag.setAttribute("onclick","remove(this.id)");
 	newTag.innerHTML = tags[tags.length-1];
 	tagContainer.appendChild(newTag);
+
 }
 
 function remove(elemId) {

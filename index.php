@@ -10,7 +10,7 @@
 	<body>
 		<?php include "gnavbar.php" ?>
 		<div class = "logoSection"><img src="img/stbdLogo.png" alt="Logo" style="width:320px"></div>
-		<div class = "searchSection">
+		<div class = "searchSection" id="searchSec">
 			You've found Mr.Right, let us find you the right vendor
 			<div class="searchContainer">
 				<div class="row search" style="	animation: 0.8s ease-out 0s 1 slideInFromLeft;">
