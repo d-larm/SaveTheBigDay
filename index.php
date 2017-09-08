@@ -4,7 +4,6 @@
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<?php include "scripts.php" ?>
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/grid.css">
 		<title>Save The Big Day - Home</title>
 	</head>
 	<body>
@@ -119,7 +118,7 @@
 						tagstring += "#"+encodeURIComponent(tags[i].trim());
 					}
 					if(location != "")
-						window.location.href = "./vendors.php?tags="+tagstring+"&postcode="+location;
+						window.location.href = "./vendors.php?tags="+tagstring+"&postcode="+location.replace(/\s+/g, '');
 					else
 						swal("Can not start search","Please enter postcode", "error");
 					
