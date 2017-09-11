@@ -98,3 +98,63 @@
 		</div>	
 	</div>
 </div>
+
+<div id="messageModal" class="modal">
+		<div class="modal-content" style="width:50%;" >
+	  		<div class="modal-header">
+	  			<i class="close fa fa-remove"></i>
+	  			<h2 align=center>Messages</h2>
+		    </div>
+
+	    	<div class="modal-body">
+		    	<div class="row">
+		    		<div class="col-2" style="border-right:1px solid white;padding-left:0;">
+		    			<div id="messageNav">
+			    			<ul>
+			    				<li><a href="#" id="unreadNav">New <i class="fa fa-pencil-square-o"></i></a></li>
+			    				<li><a href="#" id="unreadNav">Unread&emsp;<i class="fa fa-envelope"></i></a></li>
+			    				<li><a href="#" id="inboxNav">Inbox <i class="fa fa-inbox"></i></a></li>
+			    				<li><a href="#" id="sentNav">Sent <i class="fa fa-paper-plane-o"></i></a></li>
+			    			</ul>
+		    			</div>
+		    		</div>
+		    		<div class="col-10 inbox">
+		    			<table>
+		    				<thead>
+		    					<th>Sender</th>
+		    					<th>Subject</th>
+		    					<th>Time</th>
+		    				</thead>
+		    				<tbody>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    					<tr><td>ndias233</td><td>We need to talk...</td><td>20/02/2032</td></tr>
+		    				</tbody>
+
+		    			</table>
+
+		    		</div>
+		    	</div>
+	    	</div>   
+		</div>
+	</div>	
+</div>
