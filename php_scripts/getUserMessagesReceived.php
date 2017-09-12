@@ -2,7 +2,6 @@
 <?php include "database.php" ?>
 <?php include "securetext.php" ?>
 <?php
-	//all errors that occur and kept in the database
 	$user = secure($_POST["id"]); //Selected category
 	$database = new Database();
 	$data = array();

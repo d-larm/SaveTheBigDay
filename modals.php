@@ -86,7 +86,7 @@
 						</div>
 						<div class = "extra">
 							<a href="#" style="text-decoration:none;color: white;float:left;" id="registerNow">Register</a>
-							<a href="vendorUser.php" style="text-decoration:none;color: white;float:right;margin-right:1%;">Are you a vendor?</a>
+							<a href="vendorMember.php" style="text-decoration:none;color: white;float:right;margin-right:1%;">Are you a vendor?</a>
 						</div>
 					</form>
 					<br><br>
@@ -149,23 +149,24 @@ $(document).ready(function(){
 		$(".newMessage").hide();
 		$(".inbox").hide();
 		$(".inbox").fadeIn();
-		
-		postData = {
-			id:"<?php echo $_SESSION['id'] ?>"
-		}
-		$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
-			messages = JSON.parse(data);
-			$(".messageList").empty();
-			if(messages.length == 0)
-				$(".messageList").append("<h1>No messages</h1>").fadeIn();
-			else{
-				for(i=0;i<messages.length;i++)
-					if(messages[i]["Read"])
-						$(".messageList").append("<tr class='readMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
-					else
-						$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+		if("<?php echo isset($_SESSION['id']) ?>"){
+			postData = {
+				id:"<?php echo $_SESSION['id'] ?>"
 			}
-		});
+			$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
+				messages = JSON.parse(data);
+				$(".messageList").empty();
+				if(messages.length == 0)
+					$(".messageList").append("<h1>No messages</h1>").fadeIn();
+				else{
+					for(i=0;i<messages.length;i++)
+						if(messages[i]["Read"])
+							$(".messageList").append("<tr class='readMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+						else
+							$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+				}
+			});
+		}
 
 	});
 
@@ -195,6 +196,10 @@ $(document).ready(function(){
 		});
 
 	});
+
+	$(".sendMessage").click(function(){
+
+	})
 
 });
 </script>
