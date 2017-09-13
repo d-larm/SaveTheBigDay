@@ -16,37 +16,35 @@
 						<button class="logo-round" style="width:100%;height:200px;border-radius:50%;"> UPLOAD LOGO </button>
 				</div>
 				<div class=col-5>
-					<form id="vendorPageForm">
-						<label>Vendor Name</label>
-						<p><input type=text class="vendorMemberInputLarge"></p>
+					<label>Vendor Name</label>
+					<p><input type=text name="name" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
-						<label>Vendor Category</label>
-						<p><input type=text class="vendorMemberInputLarge"></p>
+					<label>Vendor Category</label>
+					<p><input type=text name="category" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
-						<label>Address</label>
-						<p><input type=text class="vendorMemberInputLarge"></p>
-						<p><input type=text class="vendorMemberInputLarge"></p>
+					<label>Address</label>
+					<p><input type=text name="address1" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="address2" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
-						<label>Telephone</label><label>Telephone 2</label>
-						<p><input type=text class="vendorMemberInputSmall"><input type=text class="vendorMemberInputSmall"></p>
+					<label>Telephone</label><label>Telephone 2</label>
+					<p><input type=text name="telephone1" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="telephone2" class="vendorMemberInputSmall"></p>
 
-						<label>Website</label><label>Email</label>
-						<p><input type=text class="vendorMemberInputSmall"><input type=text class="vendorMemberInputSmall"></p>
-					</form>
+					<label>Website</label><label>Email</label>
+					<p><input type=text name="website" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="email" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
 				</div>
 				<div class=col-5>
 					<label>Facebook</label>
-					<p><input type=text form=vendorPageForm class="vendorMemberInputLarge"></p>
+					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>Instagram</label>
-					<p><input type=text form=vendorPageForm class="vendorMemberInputLarge"></p>
+					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>Twitter</label>
-					<p><input type=text form=vendorPageForm class="vendorMemberInputLarge"></p>
+					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>I confirm that I am the owner of this business</label><input type=checkbox>
 
-					<p><button id="submitVendorButton" form=vendorPageForm>Submit Vendor</button></p>
+					<p><button id="submitVendorButton" form=vendor-dropzone>Submit Vendor</button></p>
 
 				</div>
 			</div>
@@ -63,22 +61,54 @@
 			Dropzone.options.vendorDropzone = {
 				autoProcessQueue: false,
 				uploadMultiple: true,
-				parallelUploads: 10,
+				parallelUploads: 20,
 				dictDefaultMessage: "Drop up to 20 files here to upload (7MB max)",
 				paramName: "vendorfiles", // The name that will be used to transfer the file
 				maxFilesize: 7, // MB
 				maxFiles: 20,
+				acceptedFiles: "image/*",
 				addRemoveLinks: true,
-				dictRemoveFile: "X",
+				dictRemoveFile: "Remove",
 				init: function() {
-					alert();
-	                $.each(files, function (index, item) {
-	                    this.emit('addedfile', 'uploading');
-	                });
 					//Gets the submit button
-					var dropzone = this; //Gets the current dropzone
+					var dropzone = this;
 					$("#submitVendorButton").click(function(){
 						dropzone.processQueue(); //Processes all images in the queue when submit button clicked
+						event.preventDefault();  
+				  	  	event.stopPropagation();
+				  	  	var url = $("#vendor-dropzone").attr("action");
+    					var formData = $("#vendor-dropzone").serializeArray();
+    					console.log(formData);
+    					
+					});
+					this.on("error",function(file){
+						if(file.type != "image/*"){
+							swal("Cannot add file","File is not an image", "error");
+							dropzone.removeFile(file);
+						}
+
+					});
+					this.on("addedfile",function(file){
+						if(file.type != "image/png" && file.type != "image/jpeg" && file.type != "image/jpg"){
+							swal("Cannot add file","File is not an image", "error");
+							dropzone.removeFile(file);
+						}
+						if (this.files.length > 1) {
+						   for (i = 0; i < this.files.length-1; i++) {
+								if(this.files[i].name === file.name && this.files[i].size === file.size){
+									swal("Cannot add file","File already added", "error");
+									dropzone.removeFile(file);
+								}
+						    }
+						}
+					});
+
+					// this.on("queuecomplete",function(file){
+					// 	swal("Complete","", "success");
+					// });
+					this.on("maxfilesexceeded",function(file){
+						swal("Cannot add image","Max number of photos reached", "error");
+						dropzone.removeFile(file);
 					});
 				}
 			};
@@ -88,7 +118,6 @@
 				$("html").on("drop", function(event) {
 				    event.preventDefault();  
 				    event.stopPropagation();
-				    alert("Dropped!");
 				});
 				$("html").on("dragover", function(event) {
 					event.preventDefault();  
@@ -102,10 +131,7 @@
 					$(this).removeClass('dragging');
 				});
 
-				$("#vendor-dropzone").submit(function(){
-					alert("Submitted");
-				})
-				
+
 
 			});
 
