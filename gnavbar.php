@@ -1,7 +1,8 @@
 <div class = "navbar">
-	<div class = "social">
+	<div class = "social" id ="socialMenu">
 		<?php include "socialButtons.php" ?>
 	</div>
+	<div id="navbarButtons">
 	<div class="navbarButton">WRITE A REVIEW</div>
 	<div class="navbarButton">MEMBERSHIP</div>
 	<?php
@@ -12,6 +13,10 @@
       	}else
     		echo "<div class='navbarButton' id='signIn'>SIGN IN</div>";
 	?>
+</div>
+	<div id = "menuButton" class = "navbarButton">
+		&#9776;
+	</div>
 </div>
 
 <?php include "modals.php" ?>

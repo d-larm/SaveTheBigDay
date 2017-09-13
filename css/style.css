@@ -1,8 +1,56 @@
-@media screen and (max-width:959px) {
+@media screen and (max-width: 800px) {
+	#navbarButtons {
+		float: right;
+		display: none;
+	}
+	#menuButton{
+		visibility: visible;
+		font-size:30px;
+		padding-top: 22px;
+		padding-right:20px;
 
+	}
+	#searchIcon {
+		font-size:20px;
+	}
+	#socialMenu {
+		padding-top: 18px;
+		padding-left:10px;
+	}
+	.logoSection {
+		padding-top: 60px !important;
+		padding-bottom: 60px !important;
+		height:120px !important;
+		border-bottom:solid white 3px !important;
+
+	}
+	.navbar {
+		height:	80px !important;
+		border-bottom:solid white 6px !important;
+	}
+	
+	.searchSection {
+		padding-top: 60px !important;
+		font-size: 30px !important;
+	}
 }
 
+@media screen and (min-width: 800px) {
+	#menuButton{
+		visibility: hidden;
+		
+	}
+}
 
+#searchIcon {
+	font-size:45px;
+}
+
+#mrRight {
+	width:75%;
+	margin-left:auto;
+	margin-right:auto;
+}
 .row * {
 	box-sizing: border-box;
 }
@@ -17,7 +65,7 @@ body{
 
 }
 
-div.navbar {
+.navbar {
     background-color: #CEBAAE;
     margin: 0;
 	float: left;
@@ -31,12 +79,13 @@ div.navbar {
     border-bottom:solid white 12px;
 } 
 
-div.logoSection {
-	text-align: center;
+.logoSection {
+	display: flex;
+	justify-content: center;
 	width: 100%;
-	padding-top: 180px;
-	padding-bottom: 180px;
-	height: 200px;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	height: 270px;
     border-left:solid white 0px;
     border-right:solid white 0px;
     border-top:solid white 0px;
@@ -51,7 +100,7 @@ div.logoSide {
 	float:left;
 }
 
-div.searchSection {
+.searchSection {
 	text-align: center;
 	width: 100%;
 	padding-top: 100px;
@@ -129,7 +178,7 @@ div.cSection{
 div.navbarButton {
     margin: 0;
     padding-top: 35px;
-	padding-right: 2%;
+	padding-right: 40px;
 	float: right;
 	top: 0;
 	left: 0;
@@ -147,8 +196,8 @@ div.navbarButton:hover {
 
 div.social {
     margin: 0;
-    padding-top: 35px;
-	padding-right: 2%;
+    padding-top: 25px;
+	padding-left:20px;
 	float: left;
 	top: 0;
 	left: 0;
@@ -192,10 +241,10 @@ div.socialButton {
 } 
 
 div.logoSpace {
-	width: 25%;
+	width: auto;
 	height:inherit;
-	margin-left:auto;
-	margin-right:auto;
+	display: flex;
+	justify-content: center;
 } 
 	
 div.footer {
