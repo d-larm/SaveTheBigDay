@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<?php include "scripts.php" ?>
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<title>Save The Big Day - Home</title>
 	</head>
 	<body>
 		<?php include "gnavbar.php" ?>
-		<div class = "logoSection"><div class="logoSpace"><img src="img/stbdLogo.png" alt="Logo" style="height:100%"></div></div>
+		<div class = "logoSection"><img src="img/stbdLogo.png" alt="Logo" style="width:320px"></div>
 		<div class = "searchSection" id="searchSec">
 			You've found Mr.Right, let us find you the right vendor
 			<div class="searchContainer">
@@ -54,12 +53,12 @@
 		</div>
 		
 		<div class = "contactSection">
-			<div class = "mSection"> <img src="img/google-maps.jpg" alt="map" style="width:100%;float:left;"> </div> 
+			<div class = "mSection"> <img src="img/google-maps.jpg" alt="map" style="width:800px;height:500x;float:left;"> </div> 
 			<div class = "cSection">
-				<h1 style="overflow-wrap: break-word; word-wrap: break-word;">
+				<h1>
 					Contact
 				</h1>
-					<p  style="overflow-wrap: break-word; word-wrap: break-word;">
+					<p>
 						We are here to help!
 						Send any questions our
 						way at:

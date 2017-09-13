@@ -54,7 +54,7 @@
 		</div>
 		
 		<div class = "contactSection">
-			<div class = "mSection"> <img src="img/google-maps.jpg" alt="map" style="width:100%;float:left;"> </div> 
+		
 			<div class = "cSection">
 				<h1 style="overflow-wrap: break-word; word-wrap: break-word;">
 					Contact
@@ -72,31 +72,7 @@
 		</div>
 		
 		<div class = "footer">	
-			<div class = "infoSide">
-			<table>
-			  <tr>
-				<td>HOME</td>
-				<td>SIGN IN</td>
-				<td>VENDORS A-Z</td>
-			  </tr>
-			  <tr>
-				<td>ABOUT US</td>
-				<td>MEMBERSHIP</td>
-				<td>CATEGORIES</td>
-			  </tr>
-			  <tr>
-				<td>CONTACT</td>
-				<td>WRITE A REVIEW</td>
-			</table>
-			
-			
-			<p>
-			SUPPORT@STBD.COM
-			</p>
-			<div class = "infoBox">
-				SAVE THE BIG DAY IS REGISTERED
-				LIMITED COMPANY 08XXXXX
-			</div>
+		
 		</div>	
 			<div class = "logoSide">
 				<img src="img/stbdLogo2.png" alt="Logo2" style="width:520px; transform: translate(350px, -140px);">
