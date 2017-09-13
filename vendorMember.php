@@ -64,13 +64,17 @@
 				autoProcessQueue: false,
 				uploadMultiple: true,
 				parallelUploads: 10,
-				dictDefaultMessage: "Drop up to 20 files here to upload (7MB Max)",
+				dictDefaultMessage: "Drop up to 20 files here to upload (7MB max)",
 				paramName: "vendorfiles", // The name that will be used to transfer the file
 				maxFilesize: 7, // MB
 				maxFiles: 20,
-				dictCancelUpload: "Cancel upload",
 				addRemoveLinks: true,
+				dictRemoveFile: "X",
 				init: function() {
+					alert();
+	                $.each(files, function (index, item) {
+	                    this.emit('addedfile', 'uploading');
+	                });
 					//Gets the submit button
 					var dropzone = this; //Gets the current dropzone
 					$("#submitVendorButton").click(function(){
@@ -78,28 +82,30 @@
 					});
 				}
 			};
+
+
 			$(document).ready(function(){
+				$("html").on("drop", function(event) {
+				    event.preventDefault();  
+				    event.stopPropagation();
+				    alert("Dropped!");
+				});
+				$("html").on("dragover", function(event) {
+					event.preventDefault();  
+					event.stopPropagation();
+					$(this).addClass('dragging');
+				});
+
+				$("html").on("dragleave", function(event) {
+					event.preventDefault();  
+					event.stopPropagation();
+					$(this).removeClass('dragging');
+				});
+
 				$("#vendor-dropzone").submit(function(){
 					alert("Submitted");
 				})
-				Dropzone.options.vendorDropzone = {
-					autoProcessQueue: false,
-					uploadMultiple: true,
-					parallelUploads: 10,
-					dictDefaultMessage: "Drop up to 20 files here to upload (7MB max)",
-					paramName: "vendorfiles", // The name that will be used to transfer the file
-					maxFilesize: 7, // MB
-					maxFiles: 20,
-					dictCancelUpload: "Cancel upload",
-					addRemoveLinks: true,
-					init: function() {
-						//Gets the submit button
-						var dropzone = this; //Gets the current dropzone
-						$("#submitVendorButton").click(function(){
-							dropzone.processQueue(); //Processes all images in the queue when submit button clicked
-						});
-					}
-				};
+				
 
 			});
 
