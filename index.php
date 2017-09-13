@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php include "scripts.php" ?>
 		<link rel="stylesheet" href="css/style.css">
@@ -8,6 +9,7 @@
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/style.css">
 		<?php include "scripts.php" ?>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<title>Save The Big Day - Home</title>
 	</head>
@@ -15,11 +17,11 @@
 		<?php include "gnavbar.php" ?>
 		<div class = "logoSection"><div class="logoSpace"><img src="img/stbdLogo.png" alt="Logo" style="height:100%"></div></div>
 		<div class = "searchSection" id="searchSec">
-			You've found Mr.Right, let us find you the right vendor
+			<div id = "mrRight">You've found Mr.Right, let us find you the right vendor</div>
 			<div class="searchContainer">
 				<div class="row search" style="	animation: 0.8s ease-out 0s 1 slideInFromLeft;">
 					<div class="searchClass">				
-						<i class="fa fa-search" style="font-size:45px;"></i>
+						<i class="fa fa-search" id = "searchIcon "></i>
 					</div>
 					<div class="col-8" style="padding-left:0px; padding-bottom:0px;">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
