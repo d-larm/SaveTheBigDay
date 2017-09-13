@@ -86,7 +86,7 @@
 						</div>
 						<div class = "extra">
 							<a href="#" style="text-decoration:none;color: white;float:left;" id="registerNow">Register</a>
-							<a href="vendorUser.php" style="text-decoration:none;color: white;float:right;margin-right:1%;">Are you a vendor?</a>
+							<a href="vendorMember.php" style="text-decoration:none;color: white;float:right;margin-right:1%;">Are you a vendor?</a>
 						</div>
 					</form>
 					<br><br>
@@ -98,3 +98,108 @@
 		</div>	
 	</div>
 </div>
+
+<div id="messageModal" class="modal">
+	<div class="modal-content" style="width:50%;" >
+  		<div class="modal-header">
+  			<i class="close fa fa-remove"></i>
+  			<h2 align=center>Messages</h2>
+	    </div>
+
+    	<div class="modal-body">
+	    	<div class="row">
+	    		<div id="messageNav">
+	    			<div class="col-2">
+		    			<ul>
+		    				<li><a href="#" id="newMessageNav">New &emsp;<i class="fa fa-pencil-square-o"></i></a></li>
+		    				<li><a href="#" id="unreadNav">Unread &emsp;<i class="fa fa-envelope"></i></a></li>
+		    				<li><a href="#" id="inboxNav">Inbox &emsp;<i class="fa fa-inbox"></i></a></li>
+		    				<li><a href="#" id="sentNav">Sent &emsp;<i class="fa fa-paper-plane-o"></i></a></li>
+		    			</ul>
+	    			</div>
+	    		</div>
+	    		<div class="col-10 inbox">
+	    			<table>
+	    				<thead>
+	    					<th class="senderTitle">Sender</th>
+	    					<th>Subject</th>
+	    					<th>Time</th>
+	    				</thead>
+	    				<tbody class="messageList">
+
+	    				</tbody>
+	    			</table>
+	    		</div>
+	    		<div class="col-10 newMessage" style="display:none;">
+	    			<p><input type=text placeholder="Send to..." class="sendInput"></p>
+	    			<p><input type=text placeholder="Subject" class="subjectInput"></p>
+	    			<p><textarea rows="10" cols="30" maxlength=300 placeholder="Message" class="messageInput"></textarea></p>
+	    			<button class="chevButton sendMessage"><i class="fa fa-chevron-right"></i></button>
+	    		</div>
+	    	</div>
+    	</div>   
+	</div>
+</div>
+
+
+<script>
+//Scripts for the messaging system
+$(document).ready(function(){
+	$("#inboxNav").click(function(){
+		$(".newMessage").hide();
+		$(".inbox").hide();
+		$(".inbox").fadeIn();
+		if("<?php echo isset($_SESSION['id']) ?>"){
+			postData = {
+				id:"<?php echo $_SESSION['id'] ?>"
+			}
+			$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
+				messages = JSON.parse(data);
+				$(".messageList").empty();
+				if(messages.length == 0)
+					$(".messageList").append("<h1>No messages</h1>").fadeIn();
+				else{
+					for(i=0;i<messages.length;i++)
+						if(messages[i]["Read"])
+							$(".messageList").append("<tr class='readMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+						else
+							$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+				}
+			});
+		}
+
+	});
+
+	$("#newMessageNav").click(function(){
+		$(".inbox").hide();
+		$(".newMessage").hide();
+		$(".newMessage").fadeIn();
+	});
+
+	$("#unreadNav").click(function(){
+		$(".newMessage").hide();
+		$(".inbox").hide();
+		$(".inbox").fadeIn();
+		
+		postData = {
+			id:"<?php echo $_SESSION['id'] ?>"
+		}
+		$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
+			messages = JSON.parse(data);
+			$(".messageList").empty();
+			if(messages.length == 0)
+				$(".messageList").append("<h1>No new messages</h1>").fadeIn();
+			else{
+				for(i=0;i<messages.length;i++)
+					$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+			}
+		});
+
+	});
+
+	$(".sendMessage").click(function(){
+
+	})
+
+});
+</script>

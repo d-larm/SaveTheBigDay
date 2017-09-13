@@ -284,6 +284,12 @@ div.tags {
     transform: translateX(0);
   }
 }
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
 
 
 .searchButton {
@@ -340,6 +346,7 @@ div.infoBox {
 }
 
 
+<<<<<<< HEAD
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -419,6 +426,8 @@ div.infoBox {
 }
 
 
+=======
+>>>>>>> 9339c46b18e987e151af588e62d2e31914f228e5
 
 .tag {
 	color:blue;
@@ -436,25 +445,6 @@ div.infoBox {
     to {top:0; opacity:1}
 }
 
-.loginContainer {
-	height: auto;
-	width:80%;
-	margin-right:auto;
-	margin-left:auto;
-	margin-top:5px;
-	margin-bottom:10px;
-	background-color: rgba(255, 255, 255, 0.6);
-}
-
-.registerContainer {
-	height: auto;
-	width:100%;
-	margin-right:auto;
-	margin-left:auto;
-	padding-top:20px;
-	background-color: rgba(255, 255, 255, 0.6);
-}
-
 .inputContainer {
 	height: auto;
 	width:95%;
@@ -469,45 +459,7 @@ div.extra {
 	margin-left:auto;
 }
 
-.loginInput {
-	height: 20px;
-	border: 0px;
-	padding:20px;
-	margin-left:3%;
-	font-size: 18px;
-	color:#3F404B;
-	text-align: center;
-	width:100%;
-}
 
-.signupInput {
-	height: 20px;
-	border: 0px;
-	padding:20px;
-	font-size: 18px;
-	color:#3F404B;
-	width:100%;
-}
-
-.signUpButton {
-	margin-top:20px;
-	height: 50px;
-	border: 0px;
-
-	font-size: 18px;
-	color:#3F404B;
-	width:20%;
-	background-color:white;
-}
-
-.signUpButton:hover {
-	font-size: 22px;
-	transition:0.3s;
-	cursor:pointer;
-}
-.signUpButton:focus {
-	outline:none;
-}
 
 .chevButton {
 	width:70px;

@@ -17,6 +17,7 @@
 <?php include "modals.php" ?>
 
 <script>
+//Modal scripts for the login modal interface
 $(document).ready(function(){
 	// Get the modal
 	var modal = $("#myModal");
@@ -33,6 +34,7 @@ $(document).ready(function(){
 			$("#profileDropDown").slideUp();
 		}
 	});
+
 	// When the user clicks the button, open the modal 
 	$(document).on("click","#signIn",function(){
 		modal.fadeIn();
@@ -58,14 +60,12 @@ $(document).ready(function(){
 		$("#registerBack").css("visibility","visible");
 		$('#register').find('input').val('');
 		$('.formMessage').hide();	
-
-		
 	});
 
 	$(".close").click(function(){
-		modal.slideUp();
+		$(".modal").slideUp();
 		$('.formMessage').fadeOut();	
-	})
+	});
 
 	//Switches to the login modal when back button clicked
 	$("#registerBack").click(function(){
@@ -77,8 +77,6 @@ $(document).ready(function(){
 		register=false;
 		$(this).css("visibility","hidden");
 		$('.formMessage').fadeOut();	
-		
-
 	});
 
 	$(".signUpButton").click(function(){
@@ -89,10 +87,9 @@ $(document).ready(function(){
 		$.post("/php_scripts/logOut.php",function(data){
 			swal("Logged Out","", "success").then((value)=>{
 				location.reload();
-			});
-			
-		})
-	})
+			});	
+		});
+	});
 
 	window.onclick = function(event) {
 	    if (event.target == document.getElementById('myModal')) {
@@ -110,7 +107,28 @@ $(document).ready(function(){
     	e.preventDefault();
 	});
 });
+</script>
 
+<script>
+$(document).ready(function(){
+//Scripts for the messaging modal
+	window.onclick = function(event) {
+	    if (event.target == document.getElementById('messageModal')) {
+	        $("#messageModal").fadeOut();
+	    }
+	}
+
+	$(document).on('click','#messages',function(){
+		$("#messageModal").fadeIn();
+	});
+
+});
+
+</script>
+
+
+<script>
+//Login script for the login modal
 	function validateEmail(email) {
 		scopeVar = "";
 		var re = /\S+@\S+\.\S+/;
@@ -165,8 +183,6 @@ $(document).ready(function(){
 
 		return scopeVar;
 	}
-
-
 
 	var app=angular.module('login',[]);
 	app.controller('register',function($scope){
