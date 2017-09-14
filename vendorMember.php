@@ -22,27 +22,34 @@
 					<label>Vendor Category</label>
 					<p><input type=text name="category" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
+					<label>Additional tags</label>
+					<p><input type=text name="tags" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+
 					<label>Address</label>
 					<p><input type=text name="address1" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 					<p><input type=text name="address2" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
-					<label>Telephone</label><label>Telephone 2</label>
-					<p><input type=text name="telephone1" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="telephone2" class="vendorMemberInputSmall"></p>
+					<label>City</label>
+					<p><input type=text name="city" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="postcode" form="vendor-dropzone" class="vendorMemberInputSmall"><label> POSTCODE</label>
+
+					<p><label>Telephone</label><label>Telephone 2</label></p>
+					<p><input type=text name="telephone1" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="telephone2" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
 
 					<label>Website</label><label>Email</label>
 					<p><input type=text name="website" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="email" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
 				</div>
 				<div class=col-5>
 					<label>Facebook</label>
-					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name=facebook form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>Instagram</label>
-					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name=instagram form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>Twitter</label>
-					<p><input type=text form=vendorPageForm form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name=twitter form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
-					<label>I confirm that I am the owner of this business</label><input type=checkbox>
+					<label>I confirm that I am the owner of this business</label><input name=isOwner form=vendor-dropzone type=checkbox>
 
 					<p><button id="submitVendorButton" form=vendor-dropzone>Submit Vendor</button></p>
 
@@ -76,9 +83,9 @@
 						dropzone.processQueue(); //Processes all images in the queue when submit button clicked
 						event.preventDefault();  
 				  	  	event.stopPropagation();
-				  	  	var url = $("#vendor-dropzone").attr("action");
-    					var formData = $("#vendor-dropzone").serializeArray();
-    					console.log(formData);
+				  	  // 	var url = $("#vendor-dropzone").attr("action");
+    					// var formData = $("#vendor-dropzone").serializeArray();
+    					// console.log(formData);
     					
 					});
 					this.on("error",function(file){
@@ -86,6 +93,18 @@
 							swal("Cannot add file","File is not an image", "error");
 							dropzone.removeFile(file);
 						}
+
+					});
+					this.on("sendingmultiple",function(file,xhr,formData){
+						$("input[form=vendor-dropzone]").each(function(){
+							if($(this).attr("type") != "checkbox")
+								formData.append($(this).attr("name"),$(this).val());
+							else
+								formData.append($(this).attr("name"),$(this).is(":checked"));
+						});
+						
+						// formData = $("#vendor-dropzone").serializeArray();
+						console.log(formData);
 
 					});
 					this.on("addedfile",function(file){
@@ -102,6 +121,9 @@
 						    }
 						}
 					});
+					this.on("queuecomplete", function(file, xhr){
+               			alert(file.xhr.response);
+            		})
 
 					// this.on("queuecomplete",function(file){
 					// 	swal("Complete","", "success");

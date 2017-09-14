@@ -32,6 +32,7 @@ CREATE TABLE `VendorUser` (
 	`VendorUserID` INT NOT NULL AUTO_INCREMENT UNIQUE,
 	`Name` varchar(45) NOT NULL,
 	`Category` varchar(20) NOT NULL,
+	`Tags` varchar(300) NOT NULL,
 	`AddressLine1` varchar(45) NOT NULL,
 	`AddressLine2` varchar(45),
 	`City` varchar(30) NOT NULL,
