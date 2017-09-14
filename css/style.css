@@ -11,7 +11,7 @@
 
 	}
 	#searchIcon {
-		font-size:20px;
+		font-size:10px !important;
 	}
 	#socialMenu {
 		padding-top: 18px;
@@ -24,6 +24,12 @@
 		border-bottom:solid white 3px !important;
 
 	}
+	#submitSearch {
+		width:40px !important;
+		height:40px !important;
+
+	}
+
 	.navbar {
 		height:	80px !important;
 		border-bottom:solid white 6px !important;
@@ -32,8 +38,63 @@
 	.searchSection {
 		padding-top: 60px !important;
 		font-size: 30px !important;
+
+	}
+	.searchContainer {
+		width:90% !important;
+	
+	}
+	
+	#tagInput {
+		height:40px;
+		font-size:20px;
+	}
+	#postcodeInput {
+
+		height:40px;
+		font-size:20px;
+	}
+	
+	.searchClass {
+		height: 40px !important;
+	}
+	
+}
+
+@media screen and (max-width: 1350px) {
+	#submitSearch {
+		width:60px ;
+		height:60px ;
+
+	}
+		.searchContainer {
+		width:90% !important;
+	
+	}
+
+}
+
+@media screen and (max-width: 1000px) {
+
+	#searchleft {
+		width:50%;
+	}
+	#searchright {
+		width:30%;
+	}
+		.aboutSection {
+		font-size:22px !important;
+		width:80% !important;
+			padding-left:10% !important;
+		padding-right: 10% !important;
+	}
+	
+	.searchSection {
+					min-height:250px !important;
+		height:auto !important;
 	}
 }
+
 
 @media screen and (min-width: 800px) {
 	#menuButton{
@@ -127,7 +188,7 @@ div.searchContainer {
 	
 }
 
-div.aboutSection {
+.aboutSection {
 	text-align: center;
 	font-size: 30px;
 	height: auto;
@@ -351,7 +412,7 @@ div.tags {
 
 }
 
-div.searchClass {
+.searchClass {
 	width:7.33%; 
 	float:left;
 	margin-top:15px;
@@ -517,11 +578,13 @@ div.extra {
 	background-color: rgba(0,0,0,0);
 	color:white;
 	border:4px solid white;
-	font-size:25pt;
+	font-size:25px;
 	outline:none;
 	position: relative;
   	top: 50%;
 	cursor:pointer;
+	display: flex;
+	justify-content: center;
 }
 
 
