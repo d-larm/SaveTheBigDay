@@ -14,7 +14,7 @@
 			<div class=row style="border-top:1px solid black">
 				<div class=col-2>
 					<div class="logo-round" style="max-width:100%;height:200px;border-radius:50%;">
-						<form action="/php_scripts/updateVendorProfilePhoto" id='profile-logo' class="dropzone"></form>
+						<form action="/php_scripts/updateVendorProfilePhoto.php" id='profile-logo' class="dropzone"></form>
 					</div>
 						<!--  -->
 				</div>
@@ -117,6 +117,7 @@
                 				swal("Cannot create page","Vendor already exists", "error");
                 			else{
                 				vendorId = data["id"];
+
                 				$("#profile-logo").get(0).dropzone.processQueue();
                 			}
 						}
@@ -161,23 +162,14 @@
 				addRemoveLinks: true,
 				dictRemoveFile: "Remove",
 				init: function() {
-					//Gets the submit button
-					var dropzone = this;
-					$("#submitVendorButton").click(function(){
-						dropzone.processQueue(); //Processes all images in the queue when submit button clicked
-						event.preventDefault();  
-				  	  	event.stopPropagation();
-				  	  // 	var url = $("#vendor-dropzone").attr("action");
-    					// var formData = $("#vendor-dropzone").serializeArray();
-    					// console.log(formData);
-    					
-					});
+
+					var dropzone = this; 
+
 					this.on("error",function(file){
 						if(file.type != "image/*"){
 							swal("Cannot add file","File is not an image", "error");
 							dropzone.removeFile(file);
 						}
-
 					});
 					this.on("addedfile",function(file){
 						if(file.type != "image/png" && file.type != "image/jpeg" && file.type != "image/jpg"){
@@ -189,6 +181,7 @@
 						formData.append("id",vendorId); //Sends the id as form data
 						// formData = $("#vendor-dropzone").serializeArray();
 					});
+					
 
 					// this.on("queuecomplete",function(file){
 					// 	swal("Complete","", "success");
