@@ -13,7 +13,10 @@
 			<h1>Create Vendor Page</h1>
 			<div class=row style="border-top:1px solid black">
 				<div class=col-2>
-						<button class="logo-round" style="width:100%;height:200px;border-radius:50%;"> UPLOAD LOGO </button>
+					<div class="logo-round" style="max-width:100%;height:200px;border-radius:50%;">
+						<form action="/php_scripts/updateVendorProfilePhoto" id='profile-logo' class="dropzone"></form>
+					</div>
+						<!--  -->
 				</div>
 				<div class=col-5>
 					<label>Vendor Name</label>
@@ -65,6 +68,7 @@
 			</div>
 		</div>
 		<script>
+			var vendorId = -1;
 			Dropzone.options.vendorDropzone = {
 				autoProcessQueue: false,
 				uploadMultiple: true,
@@ -90,23 +94,33 @@
 					});
 					this.on("error",function(file){
 						if(file.type != "image/*"){
-							swal("Cannot add file","File is not an image", "error");
+							swal("Cannot add file","Error has occured", "error");
 							dropzone.removeFile(file);
 						}
 
 					});
 					this.on("sendingmultiple",function(file,xhr,formData){
-						$("input[form=vendor-dropzone]").each(function(){
+						$("input[form=vendor-dropzone]").each(function(){ //Parses the form input data
 							if($(this).attr("type") != "checkbox")
 								formData.append($(this).attr("name"),$(this).val());
 							else
 								formData.append($(this).attr("name"),$(this).is(":checked"));
+							
 						});
-						
 						// formData = $("#vendor-dropzone").serializeArray();
-						console.log(formData);
-
 					});
+
+					this.on("success", function(file, xhr){
+						data = JSON.parse(file.xhr.response);
+						if(vendorId == -1){
+                			if(data["id"] == -1)
+                				swal("Cannot create page","Vendor already exists", "error");
+                			else{
+                				vendorId = data["id"];
+                				$("#profile-logo").get(0).dropzone.processQueue();
+                			}
+						}
+            		});
 					this.on("addedfile",function(file){
 						if(file.type != "image/png" && file.type != "image/jpeg" && file.type != "image/jpg"){
 							swal("Cannot add file","File is not an image", "error");
@@ -122,7 +136,7 @@
 						}
 					});
 					this.on("queuecomplete", function(file, xhr){
-               			alert(file.xhr.response);
+               			swal("Page created successfully","Check email to claim the page", "success");
             		})
 
 					// this.on("queuecomplete",function(file){
@@ -135,8 +149,71 @@
 				}
 			};
 
+			Dropzone.options.profileLogo = {
+				autoProcessQueue: false,
+				uploadMultiple: false,
+				parallelUploads: 1,
+				dictDefaultMessage: "Drop or click to change logo (7MB max)",
+				paramName: "logo", // The name that will be used to transfer the file
+				maxFilesize: 7, // MB
+				maxFiles: 1,
+				acceptedFiles: "image/*",
+				addRemoveLinks: true,
+				dictRemoveFile: "Remove",
+				init: function() {
+					//Gets the submit button
+					var dropzone = this;
+					$("#submitVendorButton").click(function(){
+						dropzone.processQueue(); //Processes all images in the queue when submit button clicked
+						event.preventDefault();  
+				  	  	event.stopPropagation();
+				  	  // 	var url = $("#vendor-dropzone").attr("action");
+    					// var formData = $("#vendor-dropzone").serializeArray();
+    					// console.log(formData);
+    					
+					});
+					this.on("error",function(file){
+						if(file.type != "image/*"){
+							swal("Cannot add file","File is not an image", "error");
+							dropzone.removeFile(file);
+						}
+
+					});
+					this.on("addedfile",function(file){
+						if(file.type != "image/png" && file.type != "image/jpeg" && file.type != "image/jpg"){
+							swal("Cannot add file","File is not an image", "error");
+							dropzone.removeFile(file);
+						}
+					});
+					this.on("sending",function(file,xhr,formData){
+						formData.append("id",vendorId); //Sends the id as form data
+						// formData = $("#vendor-dropzone").serializeArray();
+					});
+
+					// this.on("queuecomplete",function(file){
+					// 	swal("Complete","", "success");
+					// });
+					this.on("maxfilesexceeded",function(file){
+						swal("Cannot add image","Cannot use multiple photos", "error");
+						dropzone.removeFile(file);
+					});
+				}
+			};
+
 
 			$(document).ready(function(){
+				$("#profile-logo").change(function(){
+					if (this.files && this.files[0]) {
+			        	var reader = new FileReader();
+
+				        reader.onload = function (e) {
+				        	alert
+				            $('.logo-round').attr('src', e.target.result);
+			        	}	
+			        	reader.readAsDataURL(this.files[0]);
+			    	}
+				})
+
 				$("html").on("drop", function(event) {
 				    event.preventDefault();  
 				    event.stopPropagation();

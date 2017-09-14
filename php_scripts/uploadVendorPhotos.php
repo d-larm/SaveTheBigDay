@@ -5,7 +5,6 @@
 // In PHP versions earlier than 4.1.0, $HTTP_POST_FILES should be used instead
 // of $_FILES.
 
-
 //all errors that occur and kept in the database
 $database = new Database();
 $accepted = false;
@@ -62,31 +61,25 @@ if($data["success"]){
 			else if($_FILES['vendorfiles']['type'][$i] == "image/png")
 				$uploadfile = $uploaddir . basename("v({$fileCount}).png"); //Name if file is png
 
-			if (move_uploaded_file($_FILES['vendorfiles']['tmp_name'][$i], $uploadfile)) { //Uploads file
-			    echo "File is valid, and was successfully uploaded.\n";
-			} else {
-			    echo "Possible file upload attack!\n";
-			}
+			move_uploaded_file($_FILES['vendorfiles']['tmp_name'][$i], $uploadfile); //Uploads file
+
 			$fileCount++;
 		}
-		// $uploadfile = $uploaddir . basename($_FILES['vendorfiles']['name'][0]);
 
-		// 	if (move_uploaded_file($_FILES['vendorfiles']['tmp_name'][0], $uploadfile)) {
-		// 	    echo "File is valid, and was successfully uploaded.\n";
-		// 	} else {
-		// 	    echo "Possible file upload attack!\n";
-		// 	}
-		echo 'Here is some more debugging info:';
-		print_r($_FILES);
-		print_r($_POST);
+		// echo 'Here is some more debugging info:';
+		// print_r($_FILES);
+		// print_r($_POST);
+		$data["id"]=$vendorId;
+		echo json_encode($data);
 
-		print "</pre>";
 	}else
 		echo "No files";
 
 }else{
+	$data["id"]=-1;
 	echo json_encode($data);
 }
+
 
 
 
