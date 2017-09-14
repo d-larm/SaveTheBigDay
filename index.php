@@ -108,7 +108,7 @@
 			</div>
 				
 		</div>
-		<script src="javascript/tagList.js" type="text/javascript"></script>
+		<script src="/javascript/tagList.js" type="text/javascript"></script>
 		<script>
 		$(document).ready(function(){
 			//Selects the category from the dropdown when an option is clicked

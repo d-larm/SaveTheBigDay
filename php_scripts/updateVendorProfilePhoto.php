@@ -6,7 +6,6 @@
 // of $_FILES.
 
 //all errors that occur and kept in the database
-print_r($_POST);
 
 $vendorId = secure($_POST["id"]);
 //Upload files to the vendor's directory
