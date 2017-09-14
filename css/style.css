@@ -1,3 +1,62 @@
+@media screen and (max-width: 700px) {
+		#submitSearch {
+		width:40px !important;
+		height:40px !important;
+		transform: translate(-15px, -3px) !important;
+
+	}
+		#searchByVendor {
+		font-size:12px !important;
+	}
+		#searchByVendor {
+		margin-top:2px !important;
+	}
+}
+@media screen and (max-width: 450px) {
+#submitSearch {
+		width:28px !important;
+		height:28px !important;
+		transform: translate(-20px, 2px) !important;
+
+	}
+}
+
+@media screen and (max-width: 500px) {
+		#submitSearch {
+		width:26px;
+		height:26px;
+	}
+	#searchByVendor {
+		margin-top:2px !important;
+	}
+	#searchleft {
+
+		padding-right:5px !important;
+		padding-top:1px;
+		padding-bottom:1px;
+	}
+	#searchright {
+		padding-left:5px !important;
+		padding-top:1px;
+		padding-bottom:1px;
+	}
+	#tagInput {
+		height:27px !important;
+		font-size:14px !important;
+	}
+	#postcodeInput {
+		height:27px !important;
+		font-size:14px !important;
+	}
+	#searchClass {
+		margin-left:3% !important;
+		height: 27px !important;
+		margin-top:12px !important;
+		padding-top:0px !important;
+		padding-left:0px !important;
+	}
+}
+
 @media screen and (max-width: 800px) {
 	#navbarButtons {
 		float: right;
@@ -11,7 +70,7 @@
 
 	}
 	#searchIcon {
-		font-size:10px !important;
+		font-size:18px;
 	}
 	#socialMenu {
 		padding-top: 18px;
@@ -24,12 +83,24 @@
 		border-bottom:solid white 3px !important;
 
 	}
-	#submitSearch {
-		width:40px !important;
-		height:40px !important;
-
+		#searchByVendor {
+		margin-top:4px !important;
 	}
-
+	#searchleft {
+		width:50%;
+		padding-right:10px ;
+		padding-top:12px;
+		padding-bottom:12px;
+	}
+	#searchright {
+		width:30%;
+		padding-left:10px;
+		padding-top:12px;
+		padding-bottom:5px;
+	}
+	.chevButton{
+		transform: translate(-15px, -10px) !important;
+	}
 	.navbar {
 		height:	80px !important;
 		border-bottom:solid white 6px !important;
@@ -42,23 +113,34 @@
 	}
 	.searchContainer {
 		width:90% !important;
-	
 	}
-	
+
 	#tagInput {
 		height:40px;
 		font-size:20px;
 	}
 	#postcodeInput {
-
 		height:40px;
 		font-size:20px;
 	}
 	
-	.searchClass {
-		height: 40px !important;
+	#searchClass {
+		margin-left:3% !important;
+		height: 40px;
+		margin-top:12px !important;
 	}
 	
+	.searchSection {
+		min-height:170px !important;
+		height:auto !important;
+	}
+	#subSearch{
+		padding-bottom:0px;
+	}
+	
+	#look{
+		transform: translate(-6px, -13px) !important;
+	}
 }
 
 @media screen and (max-width: 1350px) {
@@ -71,10 +153,17 @@
 		width:90% !important;
 	
 	}
+	#searchClass {
+			margin-left:1% ;
+	}
 
 }
 
 @media screen and (max-width: 1000px) {
+	
+	#searchClass {
+			margin-left:2% !important;
+	}
 
 	#searchleft {
 		width:50%;
@@ -85,14 +174,16 @@
 		.aboutSection {
 		font-size:22px !important;
 		width:80% !important;
-			padding-left:10% !important;
+		padding-left:10% !important;
 		padding-right: 10% !important;
 	}
 	
 	.searchSection {
-					min-height:250px !important;
-		height:auto !important;
+		min-height:250px ;
+		height:auto;
 	}
+	
+	
 }
 
 
@@ -100,6 +191,12 @@
 	#menuButton{
 		visibility: hidden;
 		
+	}
+	#searchClass {
+		height: 70px;
+	}
+	#look{
+		transform: translate(-6px, -12px) !important;
 	}
 }
 
@@ -412,14 +509,13 @@ div.tags {
 
 }
 
-.searchClass {
+#searchClass {
 	width:7.33%; 
 	float:left;
-	margin-top:15px;
-	margin-left:1%;
-	height: 70px;
 	background-color:white;
 	color:#ADAEB4;
+	margin-top:15px;
+	margin-left:1%;
 }
 .searchButton:focus {
   outline: none;

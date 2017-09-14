@@ -20,8 +20,8 @@
 			<div id = "mrRight">You've found Mr.Right, let us find you the right vendor</div>
 			<div class="searchContainer">
 				<div class="row search" style="	animation: 0.8s ease-out 0s 1 slideInFromLeft;">
-					<div class="searchClass">				
-						<i class="fa fa-search"></i>
+					<div class="col-1" id="searchClass">				
+						<i class="fa fa-search" id="look"></i>
 					</div>
 					<div class="col-8" style="padding-left:0px; padding-bottom:0px;" id="searchleft">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
@@ -30,7 +30,7 @@
 					<div class="col-2" id="searchright">
 					<input type="text" id="postcodeInput" class="searchTerm2" placeholder="SE22 9JB">
 					</div>
-					<div class="col-1">
+					<div class="col-1" id="subSearch">
 					<button type="submit" class="chevButton" style= "transform: translate(-5px, 5px);" ng-click="validate()" id="submitSearch"><i class="fa fa-chevron-right";></i></button>
 					</button>
 					</div>

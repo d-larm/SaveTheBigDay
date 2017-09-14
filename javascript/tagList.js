@@ -8,7 +8,7 @@ var tagNo=0;
 
 tagInput.addEventListener("keypress", function (e) {
 	var key = e.keyCode;
-	if ((key === 13)&&(tagInput.value!=="")) { // 13 is enter
+	if ((key === 32)&&(tagInput.value!=="")) { // 13 is enter
 		tagNo++;
 		tags.push(tagInput.value);
 		for (var i=0; i<tags.length; i++) {
