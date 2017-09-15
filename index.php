@@ -106,7 +106,7 @@
 			</div>
 		</div>	
 			<div class = "logoSide">
-				<img src="img/stbdLogo2.png" alt="Logo2" style="width:520px; transform: translate(950px,-460px);" id="logoImg">
+				<img src="img/stbdLogo2.png" alt="Logo2" style="width:520px; transform: translate(950px,-460px); float:right;" id="logoImg">
 			</div>
 				
 		</div>
