@@ -9,7 +9,7 @@
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/style.css">
 		<?php include "scripts.php" ?>
-		
+		<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<title>Save The Big Day - Home</title>
 	</head>
@@ -21,7 +21,9 @@
 			<div class="searchContainer">
 				<div class="row search" style="	animation: 0.8s ease-out 0s 1 slideInFromLeft;">
 					<div class="col-1" id="searchClass">				
-						<i class="fa fa-search" id="look"></i>
+						
+					<i class="fa fa-fw" aria-hidden="true" id="look">&#xf002;</i>
+      
 					</div>
 					<div class="col-8" style="padding-left:0px; padding-bottom:0px;" id="searchleft">				
 						<input type="text" id="tagInput" class="searchTerm1" placeholder= "Search by tag" >
@@ -59,9 +61,9 @@
 		</div>
 		
 		<div class = "contactSection">
-			<div class = "mSection"> <img src="img/google-maps.jpg" alt="map" style="width:100%;float:left;"> </div> 
+			<div class = "mSection"> <img src="img/google-maps.jpg" alt="map" style="width:100%;"> </div> 
 			<div class = "cSection">
-				<h1 style="overflow-wrap: break-word; word-wrap: break-word;">
+				<h1 style="overflow-wrap: break-word; word-wrap: break-word; margin-top:0px;" id="contactH">
 					Contact
 				</h1>
 					<p  style="overflow-wrap: break-word; word-wrap: break-word;">
@@ -77,7 +79,7 @@
 		</div>
 		
 		<div class = "footer">	
-			<div class = "infoSide">
+			<div class = "infoSide" style="padding-left:15%;">
 			<table>
 			  <tr>
 				<td>HOME</td>
@@ -104,7 +106,7 @@
 			</div>
 		</div>	
 			<div class = "logoSide">
-				<img src="img/stbdLogo2.png" alt="Logo2" style="width:520px; transform: translate(350px, -140px);">
+				<img src="img/stbdLogo2.png" alt="Logo2" style="width:520px; transform: translate(1150px,-460px);" id="logoImg">
 			</div>
 				
 		</div>
