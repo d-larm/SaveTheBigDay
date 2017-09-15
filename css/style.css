@@ -70,6 +70,13 @@
 	}
 }
 @media screen and (max-width: 500px) {
+	.tags {
+		font-size:15px !important;
+		padding:5px !important ;
+		margin-bottom: 7px !important;
+		margin-right:5px !important;
+		margin-top:2px !important;
+	}
 	.navbar {
 		height:60px !important;
 	}
@@ -129,6 +136,14 @@
 }
 
 @media screen and (max-width: 799px) {
+	.tags {
+		font-size:20px ;
+		padding:5px ;
+		margin-top: 5px !important;
+		margin-bottom: 10px !important;
+		margin-right:10px !important;
+
+	}
 	#tagInput {
 		padding-left:10px !important;
 	}
@@ -304,6 +319,10 @@
 	}
 	.navbar {
 		height: 100px;
+	}
+	.tags {
+		padding:10px;
+	font-size: 30px;
 	}
 }
 
@@ -583,11 +602,9 @@ div.tags {
 	margin-right:20px;
 	margin-bottom:15px;
 	margin-top:10px;
-	padding:10px;
-	font-size: 30px;
 	color:#B2B3B7;
 	background-color:white;
-	border-radius:7px;
+	border-radius:4px;
 	cursor:pointer;
 	animation: 0.2s ease-out 0s 1 slideInFromLeft;
 }
