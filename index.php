@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<title>Save The Big Day - Home</title>
 	</head>
-	<body>
+	<body ng-app="app">
 		<?php include "gnavbar.php" ?>
 		<div class = "logoSection"><div class="logoSpace"><img src="img/stbdLogo.png" alt="Logo" style="height:100%"></div></div>
 		<div class = "searchSection" id="searchSec">

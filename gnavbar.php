@@ -136,7 +136,7 @@ $(document).ready(function(){
 <script>
 //Login script for the login modal
 
-	var app=angular.module('login',[]);
+	var app=angular.module('app',[]);
 	app.controller('register',function($scope){
 		$scope.title="Register"
 		$scope.validate = function(){

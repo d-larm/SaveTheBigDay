@@ -41,28 +41,45 @@ function validateInput(input){
 
 function validateNumber(number){
 	scopeVar = "";
+	number = String(number)
 	if(isNaN(number) || !number ){
-		scopeVar = "Enter a valid UK number (07XXXXXXXXX or 02XXXXXXXXXXX)";
+		scopeVar = "Enter a valid UK number";
 	}
 	else
-		if(number.substring(0,2) != "07" && number.substring(0,2) != "02"){
-			scopeVar = "Enter a valid UK number (07XXXXXXXXX or 02XXXXXXXXXXX)";
+		if(number.length < 11){
+			scopeVar = "Enter a valid UK number";
 		}
 
 	return scopeVar;
 }
 
 function validateURL(URL){
-
+	data = {
+		url: URL
+	}
+	alert(String(URL))
 	scopeVar = "";
-	if(!input)
-		scopeVar="Please fill out the field";
-	$.post("/php_scripts/checkURL.php",{URL: URL},function(exists){
-		if(!exists)
-			scopeVar = "Not a valid URL";
+	if(!URL)
+		scopeVar="Please enter a URL into the field";
+	else{
+		// $.post("/php_scripts/checkURL.php",data,function(exists){
+		// 	exists = JSON.parse(exists);
+		// 	alert(exists)
+		// 	if(!exists)
+		// 		scopeVar = "Not a valid URL";
 
-		alert(exists)
-	});
+		// 	alert(exists)
+		// });
+		var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
+		    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
+		    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
+		    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
+		    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
+		    '(\#[-a-z\d_]*)?$','i'
+		); // fragment locater
+	  if(!pattern.test(URL))
+	    console.log("Please enter a valid URL.");
+	}
 
 	return scopeVar;
 }
