@@ -149,25 +149,29 @@ $(document).ready(function(){
 		$(".newMessage").hide();
 		$(".inbox").hide();
 		$(".inbox").fadeIn();
-		if("<?php echo isset($_SESSION['id']) ?>"){
-			postData = {
-				id:"<?php echo $_SESSION['id'] ?>"
-			}
-			$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
-				messages = JSON.parse(data);
-				$(".messageList").empty();
-				if(messages.length == 0)
-					$(".messageList").append("<h1>No messages</h1>").fadeIn();
-				else{
-					for(i=0;i<messages.length;i++)
-						if(messages[i]["Read"])
-							$(".messageList").append("<tr class='readMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
-						else
-							$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
-				}
-			});
+		id = <?php
+			if(isset($_SESSION['id'])){ 
+				echo $_SESSION['id']; 
+			}else{ 
+				echo '-1';}
+		?>
+		
+		postData = {
+			id: id
 		}
-
+		$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
+			messages = JSON.parse(data);
+			$(".messageList").empty();
+			if(messages.length == 0)
+				$(".messageList").append("<h1>No messages</h1>").fadeIn();
+			else{
+				for(i=0;i<messages.length;i++)
+					if(messages[i]["Read"])
+						$(".messageList").append("<tr class='readMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+					else
+						$(".messageList").append("<tr class='unreadMessage'><td>"+messages[i]["Sender"]+"</td><td>"+messages[i]["Subject"].substring(0,20)+"</td><td>"+messages[i]["Timestamp"]+"</td></tr>").slideDown();
+			}
+		});
 	});
 
 	$("#newMessageNav").click(function(){
@@ -180,9 +184,15 @@ $(document).ready(function(){
 		$(".newMessage").hide();
 		$(".inbox").hide();
 		$(".inbox").fadeIn();
-		
+		id = <?php
+			if(isset($_SESSION['id'])){ 
+				echo $_SESSION['id']; 
+			}else{ 
+				echo '-1';}
+		?>
+
 		postData = {
-			id:"<?php echo $_SESSION['id'] ?>"
+			id: id
 		}
 		$.post("/php_scripts/getUserMessagesReceived.php",postData,function(data){
 			messages = JSON.parse(data);

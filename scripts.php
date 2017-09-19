@@ -3,7 +3,6 @@
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="/javascript/dropzone.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="/css/modals.css">
 		<link rel="stylesheet" href="/css/grid.css">
 		<link rel="stylesheet" href="/css/dropzone.css">

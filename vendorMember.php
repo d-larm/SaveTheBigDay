@@ -5,56 +5,60 @@
 		<link rel="stylesheet" href="css/style.css">
 		<?php include "scripts.php" ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/gridCollapsible.css">
 		<title>Save The Big Day - Vendor Member</title>
+
 	</head>
 	<body style="background-color:white;">
 		<?php include "gnavbar.php" ?>
-		<div class=bodyContainer style="padding:0 100px 0 100px;">
+		<div class=bodyContainer style="padding:0 100px 0 100px;" ng-app="vendorpage" ng-controller="formInputs">
 			<h1>Create Vendor Page</h1>
 			<div class=row style="border-top:1px solid black">
 				<div class=col-2>
-					<div class="logo-round" style="max-width:100%;height:200px;border-radius:50%;">
+					<div class="logo-round" style="max-width:100%;width:200px;height:200px;border-radius:50%;">
 						<form action="/php_scripts/updateVendorProfilePhoto.php" id='profile-logo' class="dropzone"></form>
 					</div>
 						<!--  -->
 				</div>
 				<div class=col-5>
 					<label>Vendor Name</label>
-					<p><input type=text name="name" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="name" ng-model="name" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{nameMsg}}</div></p>
 
 					<label>Vendor Category</label>
-					<p><input type=text name="category" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="category" ng-model="category" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{categoryMsg}}</div></p>
 
 					<label>Additional tags</label>
-					<p><input type=text name="tags" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="tags" ng-model="tags" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{tagMsg}}</div></p>
 
 					<label>Address</label>
-					<p><input type=text name="address1" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
-					<p><input type=text name="address2" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=text name="address1" ng-model="address1" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{address1Msg}}</div></p>
+					<p><input type=text name="address2" ng-model="address2" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
 
 					<label>City</label>
-					<p><input type=text name="city" form="vendor-dropzone" class="vendorMemberInputLarge"></p>
-					<p><input type=text name="postcode" form="vendor-dropzone" class="vendorMemberInputSmall"><label> POSTCODE</label>
+					<p><input type=text name="city" ng-model="city" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{cityMsg}}</div></p>
+					<p><input type=text name="postcode" ng-model="postcode" form="vendor-dropzone" class="vendorMemberInputSmall"><label> POSTCODE</label><div class="formMessage"></div>
 
 					<p><label>Telephone</label><label>Telephone 2</label></p>
-					<p><input type=text name="telephone1" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="telephone2" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
+					<p><input type=number name="telephone1" ng-model="telephone1" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=number name="telephone2" ng-model="telephone2" form="vendor-dropzone" class="vendorMemberInputSmall">
+					<p><div class="formMessage">{{tel1Msg}}</div></p>
 
 					<label>Website</label><label>Email</label>
-					<p><input type=text name="website" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="email" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
+					<p><input type=url name="website" ng-model="website" form="vendor-dropzone" class="vendorMemberInputSmall"><input type=text name="email" ng-model="email" form="vendor-dropzone" class="vendorMemberInputSmall"></p>
+					<p><div class="formMessage">{{websiteMsg}}</div><div class="formMessage">{{emailMsg}}</div></p>
 				</div>
 				<div class=col-5>
 					<label>Facebook</label>
-					<p><input type=text name=facebook form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=url name=facebook ng-model="facebook" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{facebookMsg}}</div></p>
 
 					<label>Instagram</label>
-					<p><input type=text name=instagram form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=url name=instagram ng-model="instagram" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{instagramMsg}}</div></p>
 
 					<label>Twitter</label>
-					<p><input type=text name=twitter form="vendor-dropzone" class="vendorMemberInputLarge"></p>
+					<p><input type=url name=twitter ng-model="twitter" form="vendor-dropzone" class="vendorMemberInputLarge"><div class="formMessage">{{twitterMsg}}</div></p>
 
 					<label>I confirm that I am the owner of this business</label><input name=isOwner form=vendor-dropzone type=checkbox>
 
-					<p><button id="submitVendorButton" form=vendor-dropzone>Submit Vendor</button></p>
+					<p><button id="submitVendorButton" ng-click="validate()">Submit Vendor</button></p>
 
 				</div>
 			</div>
@@ -67,8 +71,10 @@
 				</div>
 			</div>
 		</div>
+		<script src="/javascript/validateInputs.js"></script>
 		<script>
 			var vendorId = -1;
+			var isValid=true;
 			Dropzone.options.vendorDropzone = {
 				autoProcessQueue: false,
 				uploadMultiple: true,
@@ -84,9 +90,7 @@
 					//Gets the submit button
 					var dropzone = this;
 					$("#submitVendorButton").click(function(){
-						dropzone.processQueue(); //Processes all images in the queue when submit button clicked
-						event.preventDefault();  
-				  	  	event.stopPropagation();
+						
 				  	  // 	var url = $("#vendor-dropzone").attr("action");
     					// var formData = $("#vendor-dropzone").serializeArray();
     					// console.log(formData);
@@ -193,8 +197,11 @@
 				}
 			};
 
-
 			$(document).ready(function(){
+				$("#submitVendorButton").click(function(){
+					
+
+				});
 				$("#profile-logo").change(function(){
 					if (this.files && this.files[0]) {
 			        	var reader = new FileReader();
@@ -226,7 +233,42 @@
 
 
 			});
+		//Login script for the login modal
 
+			var app2=angular.module('vendorpage',[]);
+			app2.controller('formInputs',function($scope){
+				$scope.validate = function(){
+					$scope.emailMsg = validateEmail(($scope.email));
+					$scope.categoryMsg = validateInput(($scope.password));
+					$scope.nameMsg = validateInput(($scope.name));
+					$scope.address1Msg = validateInput(($scope.address1));
+					$scope.cityMsg = validateInput(($scope.city));
+					$scope.websiteMsg = validateURL(($scope.website));
+					$scope.postcodeMsg = validatePostcode(($scope.postcode));
+					$scope.tel1Msg = validateNumber(($scope.telephone1));
+					$scope.facebookMsg = validateURL(($scope.facebook));
+					$scope.instagramMsg = validateURL(($scope.instagram));
+					$scope.twitterMsg = validateURL(($scope.twitter));
+					alert($scope.twitterMsg);
+
+					if($scope.emailMsg+$scope.categoryMsg+$scope.nameMsg+$scope.address1Msg+$scope.cityMsg+$scope.websiteMsg+$scope.postcodeMsg+$scope.tel1Msg+$scope.facebookMsg+$scope.instagramMsg+$scope.twitterMsg != "")
+						isValid=false;
+					else
+						isValid=true;
+
+					alert(isValid)
+					event.preventDefault();  
+				  	event.stopPropagation();
+					if(isValid){
+						$(".formMessage").hide();
+						$("#vendor-dropzone").get(0).dropzone.processQueue(); //Processes all images in the queue when submit button clicked
+					}else{
+						swal("Cannot create profile","Some fields not filled in correctly", "error");
+						$(".formMessage").fadeIn();
+					}
+				}
+	
+			});
 		</script>
 	</body>
 	
