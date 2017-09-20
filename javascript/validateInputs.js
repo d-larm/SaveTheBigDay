@@ -54,32 +54,19 @@ function validateNumber(number){
 }
 
 function validateURL(URL){
+	URL=String(URL);
 	data = {
 		url: URL
 	}
-	alert(String(URL))
 	scopeVar = "";
 	if(!URL)
 		scopeVar="Please enter a URL into the field";
-	else{
-		// $.post("/php_scripts/checkURL.php",data,function(exists){
-		// 	exists = JSON.parse(exists);
-		// 	alert(exists)
-		// 	if(!exists)
-		// 		scopeVar = "Not a valid URL";
+	else
+		$.post("/php_scripts/checkURL.php",data,function(exists){
+			if(!exists)
+				scopeVar = "Not a valid URL";
+		});
 
-		// 	alert(exists)
-		// });
-		var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
-		    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
-		    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
-		    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
-		    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
-		    '(\#[-a-z\d_]*)?$','i'
-		); // fragment locater
-	  if(!pattern.test(URL))
-	    console.log("Please enter a valid URL.");
-	}
 
 	return scopeVar;
 }

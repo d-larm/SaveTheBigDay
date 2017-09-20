@@ -9,6 +9,7 @@
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`STBD` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `STBD`;
+SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
@@ -38,13 +39,14 @@ CREATE TABLE `VendorUser` (
 	`City` varchar(30) NOT NULL,
 	`Postcode` varchar(8) NOT NULL,
 	`Website` varchar(50),
-	`Email` varchar(45) NOT NULL,
+	`Email` varchar(45) NOT NULL UNIQUE,
 	`Telephone1` INT(11) NOT NULL,
 	`Telephone2` INT(11),
 	`Facebook` varchar(50),
 	`Instagram` varchar(50),
 	`Twitter` varchar(50),
 	`IsOwner` boolean NOT NULL,
+	`Hash` varchar(45),
 	PRIMARY KEY (`VendorUserID`)
 );
 
@@ -70,7 +72,7 @@ CREATE TABLE `VendorPage` (
 	`City` varchar(30) NOT NULL,
 	`Postcode` varchar(8) NOT NULL,
 	`Website` varchar(50),
-	`Email` varchar(45) NOT NULL,
+	`Email` varchar(45) NOT NULL UNIQUE,
 	`Telephone1` INT(11) NOT NULL,
 	`Telephone2` INT(11),
 	`Facebook` varchar(50),
@@ -106,6 +108,7 @@ CREATE TABLE `VendorReply` (
 	`Timestamp` DATETIME,
 	PRIMARY KEY(`ReplyID`)
 );
+SET FOREIGN_KEY_CHECKS = 1;
 
 ALTER TABLE `Messages` ADD CONSTRAINT `messages_fk_0` FOREIGN KEY (`Sender`) REFERENCES `Users` (`Email`);
 ALTER TABLE `Messages` ADD CONSTRAINT `messages_fk_1` FOREIGN KEY (`Sender`) REFERENCES `VendorUser` (`Email`);

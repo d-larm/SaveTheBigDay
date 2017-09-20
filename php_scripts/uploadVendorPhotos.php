@@ -27,11 +27,12 @@ $facebook = secure($_POST["facebook"]);
 $instagram = secure($_POST["instagram"]);
 $twitter = secure($_POST["twitter"]);
 $isOwner = secure($_POST["isOwner"]);
+$hash = md5( rand(0,10000) );
 
 
 
 
-$queryString = "INSERT INTO VendorUser VALUES ('','{$name}','{$category}','{$tags}','{$address1}','{$address2}','{$city}','{$postcode}','{$website}','{$email}','{$telephone1}','{$telephone2}','{$facebook}','{$instagram}','{$twitter}',false)";
+$queryString = "INSERT INTO VendorUser VALUES ('','{$name}','{$category}','{$tags}','{$address1}','{$address2}','{$city}','{$postcode}','{$website}','{$email}','{$telephone1}','{$telephone2}','{$facebook}','{$instagram}','{$twitter}',false,'{$hash}')";
 
 if($database->query($queryString)){
 	$success = true;
