@@ -8,7 +8,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<title>Save The Big Day - Home</title>
 	</head>
-	<body style="background-color:white">
+	<body style="background-color:white" ng-app="app">
 		<?php include "gnavbar2.php" ?>
 		<div class="container">
 			<div class="row">
