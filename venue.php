@@ -15,6 +15,22 @@
 				<div class ="col-4">Wedding Venue</div>
 				<div class = "col-8">is this your business</div>
 			</div>
+			<div class="row">
+				<div class="col-3">
+					<h1 align=center>Tags</h1>
+					<h2><?php
+							if (isset($_GET['tags'])) {
+						        $tags = explode("-",$_GET["tags"]);
+						        foreach($tags as $tag)
+						        	echo "<div class='tags' style='background-color:grey'>{$tag}</div>";
+						    }else{
+						        echo "Tags not set";
+						    }
+
+
+
+						?></h2>
+				</div>
 		</div>
 	</body>
 	

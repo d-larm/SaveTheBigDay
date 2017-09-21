@@ -122,10 +122,10 @@
 					tagstring="";
 					//Parses the tags into a url string to be sent as url parameters
 					for(i=0;i<tags.length;i++){
-						tagstring += "#"+encodeURIComponent(tags[i].trim());
+						tagstring += "-"+encodeURIComponent(tags[i].trim());
 					}
 					if(location != "")
-						window.location.href = "./vendors.php?tags="+tagstring+"&postcode="+location.replace(/\s+/g, '');
+						window.location.href = "./venue.php?tags="+tagstring.substring(1,tagstring.length)+"&postcode="+location.replace(/\s+/g, '');
 					else
 						swal("Can not start search","Please enter postcode", "error");
 					
