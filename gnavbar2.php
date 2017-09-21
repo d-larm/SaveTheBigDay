@@ -1,6 +1,6 @@
 <div class = "navbar">
 	<div class = "social" id ="socialMenu" style="padding-left:100px; padding-top:20px;">
-		<img src="img/companyLogo2.png" alt="companyLogo" style="width:80px;" class="sbtn">
+		<a href="/index.php"><img src="img/companyLogo2.png" alt="companyLogo" style="width:80px;" class="sbtn"></a>
 	</div>
 	<div id="navbarButtons">
 	<div class="navbarButton">WRITE A REVIEW</div>

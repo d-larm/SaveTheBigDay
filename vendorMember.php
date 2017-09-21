@@ -8,9 +8,9 @@
 		<title>Save The Big Day - Vendor Member</title>
 
 	</head>
-	<body style="background-color:white;" ng-app="app">
+	<body style="background-color:white;padding:0.1px;" ng-app="app">
 
-		<?php include "gnavbar.php" ?>
+		<?php include "gnavbar2.php" ?>
 		<div class=bodyContainer style="padding:0 100px 0 100px;" ng-controller="formInputs">
 			<h1>Create Vendor Page</h1>
 			<div class=row style="border-top:1px solid black">
@@ -245,10 +245,9 @@
 					$scope.websiteMsg = validateURL(($scope.website));
 					$scope.postcodeMsg = validatePostcode(($scope.postcode));
 					$scope.tel1Msg = validateNumber(($scope.telephone1));
-					$scope.facebookMsg = validateURL(($scope.facebook));
-					$scope.instagramMsg = validateURL(($scope.instagram));
-					$scope.twitterMsg = validateURL(($scope.twitter));
-
+					// $scope.facebookMsg = validateURL(($scope.facebook));
+					// $scope.instagramMsg = validateURL(($scope.instagram));
+					// $scope.twitterMsg = validateURL(($scope.twitter));
 					if($scope.emailMsg+$scope.categoryMsg+$scope.nameMsg+$scope.address1Msg+$scope.cityMsg+$scope.websiteMsg+$scope.postcodeMsg+$scope.tel1Msg+$scope.facebookMsg+$scope.instagramMsg+$scope.twitterMsg != "")
 						isValid=false;
 					else
@@ -264,7 +263,7 @@
 							swal("Cannot create profile","Please add at least one image", "error");
 					}else{
 						swal("Cannot create profile","Some fields not filled in correctly", "error");
-						$(".formMessage").fadeIn();
+						$(".formMessage").fadeIn('slow');
 					}
 				}
 	

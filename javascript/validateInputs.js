@@ -62,11 +62,17 @@ function validateURL(URL){
 	if(!URL)
 		scopeVar="Please enter a URL into the field";
 	else
-		$.post("/php_scripts/checkURL.php",data,function(exists){
-			if(!exists)
-				scopeVar = "Not a valid URL";
+		$.ajax({
+			type: 'POST',
+			url: "/php_scripts/checkURL.php",
+			data: data,
+			success: function(exists){
+						if(JSON.parse(exists) === false){
+							scopeVar = "Please enter a valid URL";
+						}
+					 },
+			async: false
 		});
-
 
 	return scopeVar;
 }
