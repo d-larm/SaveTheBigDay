@@ -45,12 +45,13 @@
 		</div>
 	</body>
 	<script>
-		data =<?php
+		data = <?php
+			$data = array();
 			$tags = $_GET["tags"];
 			$location = $_GET["postcode"];
 
-			database = new Database();
-			$data = array();
+			$database = new Database();
+			
 			foreach($tags as $tag){
 				$query = $database->query("SELECT * FROM VendorPages WHERE tags LIKE '%{$tag}%'");
 				while(($page = mysqli_fetch_assoc($query))){
@@ -58,12 +59,13 @@
 			    }
 			}	
 		    echo json_encode(array_unique($data)); //Returrns an array where all pages are unique
-		?>
+		?>;
 		for(i=0;i<data.length;i++){
 			$(".vendorPageList").append("<div class=col-3><div class=vendorElement style='padding:10px;border:1px solid grey;height:auto;min-height:400px;'>");
-			$(".vendorPageList").append("<img class='vendorImage' src='/img/"+data[i]["VendorID"]+"/v/v(0).png' style='width:100%;height:auto;'>");
+			$(".vendorPageList").append("<img class='vendorImage' src='/img/"+data[i]["VendorPageID"]+"/v/v(0).png' style='width:100%;height:auto;'>");
 			$(".vendorPageList").append("<h2 class=vendorTitle>"+data[i]["Name"]+"</h2>");
 			$(".vendorPageList").append("<p class=vendorText>"+data[i]["Content"].substring(0,25)+"</p>");
+			$(".vendorPageList").append("</div></div>");
 		}
 		
 	</script>

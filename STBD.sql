@@ -78,6 +78,7 @@ CREATE TABLE `VendorPage` (
 	`Facebook` varchar(50),
 	`Instagram` varchar(50),
 	`Twitter` varchar(50),
+	`Content` TEXT NOT NULL,
 	`IsClaimed` boolean NOT NULL,
 	PRIMARY KEY(`VendorPageID`)
 );
