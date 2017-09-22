@@ -78,7 +78,7 @@
 		margin-top:2px !important;
 	}
 	.navbar {
-		height:60px !important;
+		height:	auto ;
 	}
 	.sbtn2 {
 		width:25px !important;
@@ -148,8 +148,14 @@
 		padding-left:10px !important;
 	}
 	#navbarButtons {
-		float: right;
 		display: none;
+		float:left;
+	}
+	.navbarButton{
+		width:100% !important;
+		float:left;
+		padding:20px;
+		text-align:center;
 	}
 	#menuButton{
 		visibility: visible;
@@ -191,7 +197,7 @@
 		transform: translate(-15px, -10px) !important;
 	}
 	.navbar {
-		height:	80px ;
+		height:	auto ;
 		border-bottom:solid white 6px !important;
 	}
 	
@@ -318,8 +324,8 @@
 		transform: translate(-6px, -12px) !important;
 	}
 	.navbar {
-		height: 100px;
-	}
+		height:	auto ;
+			}
 	.tags {
 		padding:10px;
 		font-size: 30px ;
@@ -474,6 +480,25 @@ div.cSection{
 	color:white;
 }
 
+div#menuButton {
+    margin: 0;
+    padding-top: 35px;
+	padding-right: 40px;
+	padding:20px;
+	float: right;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+	color:white;
+	text-align:center;
+} 
+
+div#menuButton:hover {
+	color:#3F404B;
+	cursor:pointer;
+	transition:0.5s;
+} 
 
 div.navbarButton {
     margin: 0;
@@ -483,7 +508,7 @@ div.navbarButton {
 	top: 0;
 	left: 0;
 	width: auto;
-	height: 100px;
+	height: auto;
 	color:white;
 	text-align:center;
 } 
@@ -502,7 +527,7 @@ div.social {
 	top: 0;
 	left: 0;
 	width: auto;
-	height: 100px;
+	height: auto;
 	color:white;
 	text-align:center;
 } 

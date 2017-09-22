@@ -48,7 +48,9 @@ function validateNumber(number){
 	else
 		if(number.length < 11){
 			scopeVar = "Enter a valid UK number";
+			
 		}
+		alert(number)
 
 	return scopeVar;
 }

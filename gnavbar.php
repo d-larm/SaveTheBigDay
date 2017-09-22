@@ -2,6 +2,9 @@
 	<div class = "social" id ="socialMenu">
 		<?php include "socialButtons.php" ?>
 	</div>
+	<div id = "menuButton">
+		&#9776;
+	</div>
 	<div id="navbarButtons">
 	<div class="navbarButton">WRITE A REVIEW</div>
 	<div class="navbarButton">MEMBERSHIP</div>
@@ -14,12 +17,16 @@
     		echo "<div class='navbarButton' id='signIn'>SIGN IN</div>";
 	?>
 </div>
-	<div id = "menuButton" class = "navbarButton">
-		&#9776;
-	</div>
+	
 </div>
 
 <?php include "modals.php" ?>
+<script>
+	$(document).on('click',"#menuButton",function(){
+		$("#navbarButtons").slideToggle();
+	})
+
+</script>
 <script src="/javascript/validateInputs.js" type=text/javascript></script>
 <script src="/javascript/modalScript.js"></script>
 <script src="/javascript/messageModalScript.js"></script>

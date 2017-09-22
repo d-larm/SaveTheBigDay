@@ -248,7 +248,7 @@
 					// $scope.facebookMsg = validateURL(($scope.facebook));
 					// $scope.instagramMsg = validateURL(($scope.instagram));
 					// $scope.twitterMsg = validateURL(($scope.twitter));
-					if($scope.emailMsg+$scope.categoryMsg+$scope.nameMsg+$scope.address1Msg+$scope.cityMsg+$scope.websiteMsg+$scope.postcodeMsg+$scope.tel1Msg+$scope.facebookMsg+$scope.instagramMsg+$scope.twitterMsg != "")
+					if($scope.emailMsg+$scope.categoryMsg+$scope.nameMsg+$scope.address1Msg+$scope.cityMsg+$scope.websiteMsg+$scope.postcodeMsg+$scope.tel1Msg !="")
 						isValid=false;
 					else
 						isValid=true;
